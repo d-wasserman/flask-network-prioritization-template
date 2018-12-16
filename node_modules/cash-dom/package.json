@@ -1,0 +1,51 @@
+{
+  "name": "cash-dom",
+  "description": "An absurdly small jQuery alternative for modern browsers.",
+  "version": "2.3.9",
+  "license": "MIT",
+  "main": "./dist/cash.js",
+  "module": "./dist/cash.esm.js",
+  "jsnext:main": "./dist/cash.esm.js",
+  "scripts": {
+    "clean": "pacco clean",
+    "build:esm": "pacco build-javascript -e esm",
+    "build:prod": "pacco build-javascript",
+    "build:deploy": "npm run build:esm && npm run build:prod",
+    "build:dev": "pacco build-javascript -e development",
+    "watch:prod": "pacco watch-javascript",
+    "watch:dev": "pacco watch-javascript -e development",
+    "dev": "npm run build:dev && npm run watch:dev",
+    "prod": "npm run build:prod && npm run watch:prod",
+    "test": "opn ./test/index.html",
+    "test:watch": "browser-sync start -s . --files test,dist/cash.js --startPath test --no-notify",
+    "test:karma": "karma start --single-run",
+    "test:karma:sauce": "karma start --single-run --sauce",
+    "test:jquery": "( git -C ./test/jquery pull || git clone https://github.com/jquery/jquery.git ./test/jquery ) && npm run test:jquery:build && cd ./test/jquery && opn http://localhost:4444/test/index.html\\?module=css && php -S localhost:4444",
+    "test:jquery:build": "cat ./node_modules/jquery/dist/jquery.js ./dist/cash.js ./test/jquery_patch.js > ./test/jquery/dist/jquery.min.js",
+    "test:jquery:build:watch": "while sleep 1; do npm run test:jquery:build; done",
+    "graph": "pacco build-javascript --dependencies-graph --fresh",
+    "prepublishOnly": "npm run clean && npm run build:deploy && npm run test:karma"
+  },
+  "bugs": {
+    "url": "https://github.com/kenwheeler/cash/issues"
+  },
+  "homepage": "https://github.com/kenwheeler/cash",
+  "author": "Ken Wheeler <ken_wheeler@me.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kenwheeler/cash.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "jquery": "^3.3.1",
+    "karma": "^3.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-qunit": "^2.1.0",
+    "karma-sauce-launcher": "^1.2.0",
+    "karma-spec-reporter": "0.0.32",
+    "opn-cli": "^3.1.0",
+    "pacco": "^1.3.7",
+    "qunit": "^2.7.1"
+  }
+}

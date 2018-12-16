@@ -5,5 +5,10 @@
   "main": "index.js",
   "repository": "https://github.com/www.github.com/d-wasserman",
   "author": "David Wasserman david.wasserman.plan@gmail.com",
-  "license": "Apache 2.0"
+  "license": "Apache 2.0",
+  "dependencies": {
+    "cash-dom": "^2.3.9",
+    "d3": "^5.7.0",
+    "leaflet": "^1.3.4"
+  }
 }
