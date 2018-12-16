@@ -1,0 +1,9 @@
+{
+  "name": "flak-network-prioritization-template",
+  "version": "1.0.0",
+  "description": "This is a sample project attempting to use flask and front-end technologies to facilitate interactive prioritization analysis on networks.",
+  "main": "index.js",
+  "repository": "https://github.com/www.github.com/d-wasserman",
+  "author": "David Wasserman david.wasserman.plan@gmail.com",
+  "license": "Apache 2.0"
+}
