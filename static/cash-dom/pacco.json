@@ -1,0 +1,62 @@
+{
+  "browsers": ["ie >= 10"],
+  "paths": {
+    "tokens": {
+      "bundle": "cash"
+    },
+    "output": {
+      "javascript": {
+        "unminified": "[dist]/[bundle].js",
+        "minified": "[dist]/[bundle].min.js"
+      }
+    }
+  },
+  "plugins": {
+    "wrapper": {
+      "options": {
+        "templates": {
+          "unminified": "/* MIT https://github.com/kenwheeler/cash */\n(function(){\n[content]\n})();",
+          "minified": "/* MIT https://github.com/kenwheeler/cash */\n(function(){\n[content]})();"
+        }
+      }
+    }
+  },
+  "environments": {
+    "esm": {
+      "components": {
+        "core/export": false
+      },
+      "paths": {
+        "output": {
+          "javascript": {
+            "unminified": "[dist]/[bundle].esm.js",
+            "minified": false
+          }
+        }
+      },
+      "plugins": {
+        "wrapper": {
+          "options": {
+            "templates": {
+              "unminified": "/* MIT https://github.com/kenwheeler/cash */\n[content]\nexport default cash;\n"
+            }
+          }
+        }
+      }
+    },
+    "production": {
+      "plugins": {
+        "uglify": {
+          "enabled": false
+        },
+        "closure": {
+          "enabled": true,
+          "options": {
+            "output_wrapper": "",
+            "compilation_level": "SIMPLE"
+          }
+        }
+      }
+    }
+  }
+}
