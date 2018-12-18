@@ -1,5 +1,9 @@
 body {
   color: white;
+  padding-top: 70px;
+}
+@media screen and (max-width:2000px) {
+    body { padding-top: 0px; }
 }
 h3 {
     color:white;
