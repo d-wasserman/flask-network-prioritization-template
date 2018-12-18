@@ -1,15 +1,33 @@
-body {
+body { padding-top: 50px; }
+
+.navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+}
+    
+
+.row.content {height: 450px}
+
+.sidenav {
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  height: 100%;
+}
+
+
+footer {
+  background-color: #555;
   color: white;
-  padding-top: 70px;
+  padding: 15px;
 }
-@media screen and (max-width:2000px) {
-    body { padding-top: 0px; }
-}
-h3 {
-    color:white;
-}
-.slidecontainer {
-  width: 33%; /* Width of the outside container */
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height:auto;} 
 }
 
 /* The slider itself */
