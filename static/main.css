@@ -2,16 +2,23 @@ body { padding-top: 50px; }
 
 .navbar {
       margin-bottom: 0;
-      border-radius: 0;
-}
-    
+      border-radius: 0;}
+      
+#map{ //margin: 0% auto;
+		height: 100%;
+		width:100%; }
 
-.row.content {height: 450px}
+svg {position: relative;}    
+
+.row.content {height: 1000px;
+              position:left;}
 
 .sidenav {
   padding-top: 20px;
   background-color: #f1f1f1;
   height: 100%;
+  position: left;
+  
 }
 
 
