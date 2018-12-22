@@ -6,12 +6,14 @@
   "flags": [],
   "linkedModules": [],
   "topLevelPatterns": [
+    "chroma-js@^2.0.2",
     "d3@^5.7.0",
     "jquery-ui@^1.12.1",
     "jquery@^3.3.1",
     "leaflet@^1.3.4"
   ],
   "lockfileEntries": {
+    "chroma-js@^2.0.2": "https://registry.yarnpkg.com/chroma-js/-/chroma-js-2.0.2.tgz#507bfe0e22da9c30673ffc4532c8ca6b4f2926db",
     "commander@2": "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a",
     "d3-array@1": "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f",
     "d3-array@^1.1.1": "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f",

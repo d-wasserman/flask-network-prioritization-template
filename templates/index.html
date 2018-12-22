@@ -9,41 +9,31 @@
     <meta name="author" content="David Wasserman">
 
     <title>Network Prioritization</title>
-    <script src="{{url_for('static', filename='d3/index.js')}}"></script>
-    <script src="{{url_for('static', filename='leaflet/leaflet.js')}}"></script>
-    <link rel="stylesheet" href="{{url_for('static', filename='leaflet/leaflet.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+    <script src="{{url_for('static', filename='d3/dist/d3.js')}}"></script>
+    <script src="{{url_for('static', filename='leaflet/dist/leaflet.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery/dist/jquery.js')}}"></script>
+    <script src="{{url_for('static', filename='chroma-js/chroma.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='leaflet/dist/leaflet.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='application/main.css')}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.3"></script>
 
 </head>
 <body>
 <div class="container">
-   <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Network Prioritization</a>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="#">Network Prioritization</a>
     </div>
-  </div>
-  </nav>
-<div class="container-fluid text-center">    
-  <nav class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-    </div>
-  </div>
-  </nav>
-  <nav class="row content">
-   
-        <div class="col-sm-9 sidenav">
-            <div id="map"></div> 
-        </div>
     </div>
     </nav>
+    </div>
+    
+    <div id="map"></div>
+    
+    <script src="{{url_for('static',filename='application/main.js')}}"></script>
 
-</div>
+
 </body>
-
-</div>
 </html>
