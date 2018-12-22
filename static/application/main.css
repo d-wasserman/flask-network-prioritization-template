@@ -15,8 +15,9 @@ body {
     line-height: 18px;
     color: #555;
     background-color:white;
-    padding: 10px;
-    outline: 4px solid black;
+    padding: 15px;
+    border: 4px ridge black;
+    border-radius:15px;
 }
 .legend i {
     width: 18px;
