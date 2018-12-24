@@ -31,13 +31,14 @@ file_dir = os.path.dirname(os.path.realpath('__file__'))
 static_dir = os.path.join(file_dir, "static")
 application_dir = os.path.join(static_dir, "application")
 data_dir = os.path.join(application_dir, "data")
-gjson = os.path.join(data_dir, "WestValleyATPNetwork.geojson")
+base_gjson = os.path.join(data_dir, "WestValleyATPNetwork.geojson")
+gjson = os.path.join(data_dir, "WestValleyATPNetworkServed.geojson")
 # Variables
 
 fields = ["PedConnect_Score", "LSBikConnect_Score", "Strava_Score", "UCATWKUse_Score", "UCATBKUse_Score",
           "Bike_Ln_Score", "Crss_WK_Score", "SidWlk_Score", "Safety_Score"]
-weight_names = ["ped-connectivity", "bike-connectivity", "strava", "ucats-walk", "ucats-bike",
-          "bike-lane", "crosswalk", "sidewalk", "safety"]
+weight_names = ["pedconnectivity", "bikeconnectivity", "strava", "ucatswalk", "ucatsbike",
+          "bikelane", "crosswalk", "sidewalk", "safety"]
 weights = [.1,.1,.0375,.125,.0875,.1,.1,.1,.25]
 out_field = "Priority_Score"
 # Config
@@ -63,7 +64,7 @@ def get_df_from_geojson_properties(geojson_path):
         return df
 
 
-def weighted_sum(df, value_columns, weights, new_output_column="WeightedSum"):
+def weighted_sum(df, value_columns, weights, new_output_column="WeightedSum",sum_to_one=True):
     """Description:
     Take passed dataframe and add a column with the weighted output of value columns and their weights.
      Number of weights must match the number of value columns passed
@@ -71,12 +72,35 @@ def weighted_sum(df, value_columns, weights, new_output_column="WeightedSum"):
      :param value_columns - list of column names in df to sum
      :param weights - list of weights in same order as appropriate column
      :param new_output_column - string of new column name added to df
+     :param sum_to_one - forces the weights to sum to one
      :return df with new output column added to it"""
     assert len(value_columns) == len(weights), "length of value columns and length of weights don't match"
+    if sum_to_one:
+        sum_weights = sum(weights)
+        weights = [float(i/sum_weights) for i in weights]
     data = df[value_columns].copy()
     weight_df = pd.DataFrame(weights, index=value_columns, columns=[0])
     df[new_output_column] = data.dot(weight_df)
     return df
+
+def return_edited_geojson(gjson_path,outgjson_path,property,values):
+    """This function will return a geojson load with properties edited based on a passed property name, and
+    and ordered list of values.
+    :param gjson_path - path to input
+    :param outgjson_path- path to output
+    :param property - name of property to replace
+    :param values - list of values to replace for property- order in feature order
+    :returns data - edited dictionary
+    """
+    with open(gjson_path) as file:
+        data = json.load(file)
+        for idx,feature in enumerate(data["features"]):
+            dict = feature["properties"]
+            dict[property] = values[idx]
+    with open(outgjson_path, 'w') as f:
+        json.dump(data, f)
+    return data
+
 
 
 # App
@@ -97,11 +121,13 @@ def reweighted_geojson():
     :param: None
     :return geojson - network data edited
     """
-    df = get_df_from_geojson_properties(gjson)
+    df = get_df_from_geojson_properties(base_gjson)
     df = df[fields]
+    # weight_dict = get_weights(weight_names)
+    # weights = [weight_dict[i] for i in weight_dict.keys()]
     df = weighted_sum(df, fields, weights, out_field)
-    df= get_weights
-    return render_template("render_data.html",weighted_df = df.to_html())
+    data = return_edited_geojson(base_gjson,gjson,out_field,df[out_field].tolist())
+    return render_template("render_data.html",weighted_df = df.to_html(),json=data)
 
 @app.route('/', methods=['POST'])
 def get_weights(weight_fields):
@@ -115,5 +141,4 @@ def get_weights(weight_fields):
     return weight_dictionary
 
 if __name__ == '__main__':
-    # get_df_from_geojson_properties(gjson)
     app.run(debug=True)

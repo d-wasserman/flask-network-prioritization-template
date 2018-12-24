@@ -109,18 +109,20 @@ html, body {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
-  width: 40px; /* Set a specific slider handle width */
+  width: 25px; /* Set a specific slider handle width */
   height: 30px; /* Slider handle height */
-  background: #fe0e0e; /* Reddish background */
+  background: #de0303; /* Reddish background */
   cursor: pointer; /* Cursor on hover */
   border-radius:10px;
 }
 .slider::-webkit-slider-thumb:hover{
-    background:#ff9d00;
+    background:#FA4616;
     transition-property:background border;
     transition-duration: .25s;
     transition-timing-function: linear;
-    border:2px solid #7c0808;
+    border:4px solid #0021A5;
+    height:40px;
+    border-radius:15px;
 }
 
 .slider::-moz-range-thumb {
@@ -132,9 +134,11 @@ html, body {
 }
 
 .slider::-moz-range-thumb:hover{
-    background:#ff9d00;
+    background:#FA4616;
     transition-property: background border;
     transition-duration: .25s;
     transition-timing-function: linear;
-    border:2px solid #7c0808;
+    border:4px solid #0021A5;
+    height:40px;
+    border-radius:15px;
 }

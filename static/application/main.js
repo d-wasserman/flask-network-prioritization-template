@@ -45,7 +45,7 @@ function styleColor(feature) {
     };
 }
 
-var network = $.getJSON('static/application/data/WestValleyATPNetwork.geojson',function(data){
+var network = $.getJSON('static/application/data/WestValleyATPNetworkServed.geojson',function(data){
 L.geoJSON(data,{style:styleColor}).addTo(map)});
 
 var legend = L.control({position: 'bottomright'});
@@ -69,4 +69,15 @@ legend.onAdd = function (map) {
 
 legend.addTo(map);
 
-
+// Post Form on Slider Change
+$(function(){
+    var form = $('form');
+    $('#rangeSlider').on('change mouseup', function(){
+        $.ajax({
+            type: "POST",
+            url: form.action,
+            data: form.serialize(),
+        }).done(function(res){
+        });
+    });
+});
