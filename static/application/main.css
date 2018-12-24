@@ -4,6 +4,7 @@ html, body {
 }
 
 
+
 /* Map Styles */
 #map { height: 92%;
        width: 75%;
@@ -54,33 +55,49 @@ html, body {
   left: 0;
   background-color: #111;
   overflow-x: hidden;
-  padding:30px;
+  padding:15px;
 }
 
 .sidebar-nav p {
     color:white;
-    text-align:center;
+    text-transform: uppercase;
+    text-align: left;
+    display:inline;
 }
 
-}
+
 /* Slider Style */
 
 .slidecontainer {
   width: 100%; /* Width of the outside container */
+  margin-top:15px;
+  margin-bottom: 8px;
 }
 
-/* The slider itself */
+
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
-  width: 100%; /* Full-width */
-  height: 20px; /* Specified height */
-  background: #f3f3f3; /* Grey background */
-  outline: none; /* Remove outline */
-  opacity: 0.85; /* Set transparency (for mouse-over effects on hover) */
-  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  width: 100%; 
+  height: 20px;
+  background: #f3f3f3; 
+  outline: none; 
+  opacity: 0.85; 
+  -webkit-transition: .2s;
   transition: opacity .2s;
   border-radius:10px;
+  
+}
+
+.output { 
+    color:black;
+    text-align:center;
+    background:white;
+    display:inline;
+    float:right;
+    border-radius:10px;
+    border:4px solid white
+    
 }
 
 /* Mouse-over effects */
@@ -100,9 +117,10 @@ html, body {
 }
 .slider::-webkit-slider-thumb:hover{
     background:#ff9d00;
-    transition-property: background;
+    transition-property:background border;
     transition-duration: .25s;
     transition-timing-function: linear;
+    border:2px solid #7c0808;
 }
 
 .slider::-moz-range-thumb {
@@ -115,7 +133,8 @@ html, body {
 
 .slider::-moz-range-thumb:hover{
     background:#ff9d00;
-    transition-property: background;
+    transition-property: background border;
     transition-duration: .25s;
     transition-timing-function: linear;
+    border:2px solid #7c0808;
 }

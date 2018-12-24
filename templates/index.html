@@ -25,41 +25,70 @@
     </nav>
     
     <nav class="sidebar-nav navbar-dark bg-dark">
+        
         <p>Strava Usage</p>
-        <div class="slider">
-            <input type="range" min="1" max="100" value="3.75" class="slider" id="strava">
+        <output class="output" name="strava-text" id="stravaOutputId">3.75
+        </output>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="1" max="100" value="3.75" step="0.01" class="slider" name = id id="strava" oninput="stravaOutputId.value = strava.value"> 
+            </div>
         </div>
         <p>UCATS Bicycle Index</p>
-        <div class="slider">
-            <input type="range" min="1" max="100" value="8.75" class="slider" id="ucats-bicycle">
+        <output class="output" name="ucats-bicycle-text" id="ucats-bicycleOutputId">8.75</output>
+        <div class="slidecontainer">
+            <div class="slider">
+            <input type="range" min="1" max="100" value="8.75" step="0.01" class="slider" name = id id="ucats-bicycle" oninput="ucats-bicycleOutputId.value = ucats-bicycle.value">
+            </div>
         </div>
         <p>UCATS Pedestrian Index</p>
-        <div class="slider">
-            <input type="range" min="1" max="100" value="12.5" class="slider" id="ucats-ped">
+        <output class="output" name="ucats-ped-text" id="ucats-pedOutputId">12.5</output>
+        <div class="slidecontainer">
+            <div class="slider">
+            <input type="range" min="1" max="100" value="12.5" step="0.01" class="slider" name = id id="ucats-ped" oninput="ucats-pedOutputId.value = ucats-ped.value">
+            </div>
         </div>
         <p>Safety Score</p>
-        <div class="slider">
-            <input type="range" min="1" max="100" value="25" class="slider" id="safety">
+        <output class="output" name="safety-text" id="safetyOutputId">25</output>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="1" max="100" value="25" step="0.01" class="slider" name = id id="safety" oninput="safetyOutputId.value = safety.value">
+            </div>
         </div>
         <p>Sidewalk Presence</p>
-        <div class="slider">
-            <input type="range" min="1" max="100" value="10" class="slider" id="sidewalk">
+        <output class="output" name="sidewalk-text" id="sidewalkOutputId">10</output>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="1" max="100" value="10" step="0.01" class="slider" name = id id="sidewalk" oninput="sidewalkOutputId.value = sidewalk.value">
+            </div>
         </div>
         <p>Crosswalk Presence</p>
-        <div class="slider">
-            <input type="range" min="1" max="100" value="10" class="slider" id="crosswalk">
+        <output class="output" name="crosswalk-text" id="crosswalkOutputId">10</output>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="1" max="100" value="10" step="0.01" class="slider" name = id id="crosswalk" oninput="crosswalkOutputId.value = crosswalk.value">
+            </div>
         </div>
         <p>Bicycle Lane Presence</p>
-        <div class="slider">
-            <input type="range" min="1" max="100" value="10" class="slider" id="bike-lane">
+        <output class="output" name="bike-lane-text" id="bike-laneOutputId">10</output>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="1" max="100" value="10" step="0.01" class="slider" name = id id="bike-lane" oninput="bike-laneOutputId.value = bike-lane.value">
+            </div>
         </div>
         <p>Bicycle Connectivity</p>
-        <div class="slider">
-            <input type="range" min="1" max="100" value="10" class="slider" id="bike-connectivity">
+        <output class="output" name="bike-connectivity-text" id="bike-connectivityOutputId">10</output>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="1" max="100" value="10" step="0.01" class="slider" name = id id="bike-connectivity" oninput="bike-connectivityOutputId.value = bike-connectivity.value">
+            </div>
         </div>
         <p>Pedestrian Connectivity</p>
-        <div class="slider">
-            <input type="range" min="1" max="100" value="10" class="slider" id="ped-connectivity">
+        <output class="output" name="ped-connectivity-text" id="ped-connectivityOutputId">10</output>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="1" max="100" value="10" step="0.01" class="slider" name = id id="ped-connectivity" oninput="ped-connectivityOutputId.value = ped-connectivity.value" >
+            </div>
         </div>
      </nav>
     </div>   

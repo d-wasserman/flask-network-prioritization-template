@@ -22,8 +22,8 @@
 # Library Import
 import sys, os, json
 import pandas as pd
-from pandas.io.json import json_normalize
 from flask import Flask, render_template, jsonify
+from flask import request
 from flask_sqlalchemy import SQLAlchemy
 
 # Paths
@@ -36,6 +36,8 @@ gjson = os.path.join(data_dir, "WestValleyATPNetwork.geojson")
 
 fields = ["PedConnect_Score", "LSBikConnect_Score", "Strava_Score", "UCATWKUse_Score", "UCATBKUse_Score",
           "Bike_Ln_Score", "Crss_WK_Score", "SidWlk_Score", "Safety_Score"]
+weight_names = ["ped-connectivity", "bike-connectivity", "strava", "ucats-walk", "ucats-bike",
+          "bike-lane", "crosswalk", "sidewalk", "safety"]
 weights = [.1,.1,.0375,.125,.0875,.1,.1,.1,.25]
 out_field = "Priority_Score"
 # Config
@@ -98,8 +100,19 @@ def reweighted_geojson():
     df = get_df_from_geojson_properties(gjson)
     df = df[fields]
     df = weighted_sum(df, fields, weights, out_field)
+    df= get_weights
     return render_template("render_data.html",weighted_df = df.to_html())
 
+@app.route('/', methods=['POST'])
+def get_weights(weight_fields):
+    """Given a list of html id names, return the values of the input forms as a dictionary
+    @:param weight_fields - list of strings of names
+    @:return weight_dictionary - dictionary of string names and their weights"""
+    weight_dictionary={}
+    for weight_id in weight_fields:
+        weight = request.form[weight_id]
+        weight_dictionary[weight_id]=weight
+    return weight_dictionary
 
 if __name__ == '__main__':
     # get_df_from_geojson_properties(gjson)
