@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DataFrame Data</title>
+    <script src="{{url_for('static', filename='d3/dist/d3.js')}}"></script>
+    <script src="{{url_for('static', filename='leaflet/dist/leaflet.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery/dist/jquery.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery-ui/ui/widget.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery-ui/ui/widgets/mouse.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery-ui/ui/widgets/slider.js')}}"></script>
+    <script src="{{url_for('static', filename='chroma-js/chroma.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='leaflet/dist/leaflet.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='application/main.css')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.3"></script>
+</head>
+<body>
+<h1>Weighted Dataframe</h1>
+<div class="slider">
+  <div id="slider-handle" class="ui-slider-handle"></div>
+</div>
+<div class="slider">
+  <div id="slider-handle" class="ui-slider-handle"></div>
+</div>
+<div>
+{{weighted_df | safe}}
+</div>
+<script>
+$( function() {
+    var handle = $( "#slider-handle" );
+    $( "#slider" ).slider({
+      create: function() {
+        handle.text( $( this ).slider( "value" ) );
+      },
+      slide: function( event, ui ) {
+        handle.text( ui.value );
+      }
+    });
+  } );
+  </script>
+
+</body>
+</html>

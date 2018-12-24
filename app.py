@@ -20,26 +20,47 @@
 # limitations under the License.
 # --------------------------------
 # Library Import
-import sys,os
+import sys, os, json
 import pandas as pd
 from pandas.io.json import json_normalize
 from flask import Flask, render_template, jsonify
 from flask_sqlalchemy import SQLAlchemy
-#paths
-file_dir  = os.path.dirname(os.path.realpath('__file__'))
-static_dir = os.path.join(file_dir,"static")
-application_dir = os.path.join(static_dir,"application")
-data_dir = os.path.join(application_dir,"data")
-gjson = os.path.join(data_dir,"WestValleyATPNetwork.geojson")
-print(gjson)
-# print(json_normalize(gjson,"properties"))
 
+# Paths
+file_dir = os.path.dirname(os.path.realpath('__file__'))
+static_dir = os.path.join(file_dir, "static")
+application_dir = os.path.join(static_dir, "application")
+data_dir = os.path.join(application_dir, "data")
+gjson = os.path.join(data_dir, "WestValleyATPNetwork.geojson")
+# Variables
+
+fields = ["PedConnect_Score", "LSBikConnect_Score", "Strava_Score", "UCATWKUse_Score", "UCATBKUse_Score",
+          "Bike_Ln_Score", "Crss_WK_Score", "SidWlk_Score", "Safety_Score"]
+weights = [.1,.1,.0375,.125,.0875,.1,.1,.1,.25]
+out_field = "Priority_Score"
 # Config
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 
 db = SQLAlchemy(app)
+
+
 # Functions
+
+def get_df_from_geojson_properties(geojson_path):
+    """Returns geojson properties as a dataframe
+    :param - geojson_path - path to geojson data
+    :returns - dataframe - dataframe of geojson properties"""
+    with open(gjson) as file:
+        data = json.load(file)
+        records = []
+        for feature in data["features"]:
+            dict = feature["properties"]
+            records.append((dict))
+        df = pd.DataFrame(records)
+        return df
+
+
 def weighted_sum(df, value_columns, weights, new_output_column="WeightedSum"):
     """Description:
     Take passed dataframe and add a column with the weighted output of value columns and their weights.
@@ -55,11 +76,31 @@ def weighted_sum(df, value_columns, weights, new_output_column="WeightedSum"):
     df[new_output_column] = data.dot(weight_df)
     return df
 
+
 # App
 @app.route("/")
 def index():
+    """
+    Main App Route
+    :param None
+    :return render template - html base
+    """
     return render_template("index.html")
 
 
+@app.route("/network_geojson")
+def reweighted_geojson():
+    """
+    Returns reweighted geojson data to app.
+    :param: None
+    :return geojson - network data edited
+    """
+    df = get_df_from_geojson_properties(gjson)
+    df = df[fields]
+    df = weighted_sum(df, fields, weights, out_field)
+    return render_template("render_data.html",weighted_df = df.to_html())
+
+
 if __name__ == '__main__':
+    # get_df_from_geojson_properties(gjson)
     app.run(debug=True)

@@ -1,15 +1,14 @@
+/* Global Styles */
 html, body {
    height: 100%;
 }
 
-body { 
-    padding-top: 60px; 
-}
 
-#map { height: 100%;
-       width: 100%}
-       
-.navbar {padding:5px}
+/* Map Styles */
+#map { height: 92%;
+       width: 75%;
+       margin-left:25%;
+       }
 
 .legend {
     line-height: 18px;
@@ -25,4 +24,98 @@ body {
     float: left;
     margin-right: 8px;
     opacity: 0.7;
+}
+
+.box {
+  border: 1px solid #EEE;
+  margin: 3px;
+  padding: 5px;
+  background-color: white;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+.source {
+  position: absolute;
+  width: 50%;
+  top: 6px;
+  left: 50px;
+}
+
+/* Nav & Sidebar Styles */
+.navbar {
+  height:8%;
+}    
+
+.sidebar-nav {
+  height: 100%;
+  width: 25%;
+  position: fixed;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding:30px;
+}
+
+.sidebar-nav p {
+    color:white;
+    text-align:center;
+}
+
+}
+/* Slider Style */
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 20px; /* Specified height */
+  background: #f3f3f3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.85; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  border-radius:10px;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 40px; /* Set a specific slider handle width */
+  height: 30px; /* Slider handle height */
+  background: #fe0e0e; /* Reddish background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius:10px;
+}
+.slider::-webkit-slider-thumb:hover{
+    background:#ff9d00;
+    transition-property: background;
+    transition-duration: .25s;
+    transition-timing-function: linear;
+}
+
+.slider::-moz-range-thumb {
+  width: 40px; /* Set a specific slider handle width */
+  height: 30px; /* Slider handle height */
+  background: #fe0e0e; /* Reddish background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius:10px;
+}
+
+.slider::-moz-range-thumb:hover{
+    background:#ff9d00;
+    transition-property: background;
+    transition-duration: .25s;
+    transition-timing-function: linear;
 }
