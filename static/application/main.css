@@ -42,6 +42,12 @@ html, body {
   top: 6px;
   left: 50px;
 }
+.customPopUp .leaflet-popup-tip,
+.customPopUp .leaflet-popup-content-wrapper {
+    background: #FFB65D;
+    color: #000;
+    border: 2px solid black;
+}
 
 /* Nav & Sidebar Styles */
 .navbar {

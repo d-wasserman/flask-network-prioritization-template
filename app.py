@@ -32,7 +32,6 @@ static_dir = os.path.join(file_dir, "static")
 application_dir = os.path.join(static_dir, "application")
 data_dir = os.path.join(application_dir, "data")
 base_gjson = os.path.join(data_dir, "WestValleyATPNetwork.geojson")
-gjson = os.path.join(data_dir, "WestValleyATPNetworkServed.geojson")
 # Variables
 
 fields = ["PedConnect_Score", "LSBikConnect_Score", "Strava_Score", "UCATWKUse_Score", "UCATBKUse_Score",
@@ -54,7 +53,7 @@ def get_df_from_geojson_properties(geojson_path):
     """Returns geojson properties as a dataframe
     :param - geojson_path - path to geojson data
     :returns - dataframe - dataframe of geojson properties"""
-    with open(gjson) as file:
+    with open(geojson_path) as file:
         data = json.load(file)
         records = []
         for feature in data["features"]:
@@ -83,11 +82,10 @@ def weighted_sum(df, value_columns, weights, new_output_column="WeightedSum",sum
     df[new_output_column] = data.dot(weight_df)
     return df
 
-def return_edited_geojson(gjson_path,outgjson_path,property,values):
+def return_edited_geojson(gjson_path,property,values):
     """This function will return a geojson load with properties edited based on a passed property name, and
     and ordered list of values.
     :param gjson_path - path to input
-    :param outgjson_path- path to output
     :param property - name of property to replace
     :param values - list of values to replace for property- order in feature order
     :returns data - edited dictionary
@@ -97,8 +95,6 @@ def return_edited_geojson(gjson_path,outgjson_path,property,values):
         for idx,feature in enumerate(data["features"]):
             dict = feature["properties"]
             dict[property] = values[idx]
-    with open(outgjson_path, 'w') as f:
-        json.dump(data, f)
     return data
 
 
@@ -124,9 +120,22 @@ def reweighted_geojson():
     df = get_df_from_geojson_properties(base_gjson)
     df = df[fields]
     # weight_dict = get_weights(weight_names)
-    # weights = [weight_dict[i] for i in weight_dict.keys()]
     df = weighted_sum(df, fields, weights, out_field)
-    data = return_edited_geojson(base_gjson,gjson,out_field,df[out_field].tolist())
+    data = return_edited_geojson(base_gjson,out_field,df[out_field].tolist())
+    return jsonify(data)
+
+@app.route("/test")
+def testing_function():
+    """
+    Returns reweighted geojson data to app.
+    :param: None
+    :return geojson - network data edited
+    """
+    df = get_df_from_geojson_properties(base_gjson)
+    df = df[fields]
+    # weight_dict = get_weights(weight_names)
+    df = weighted_sum(df, fields, weights, out_field)
+    data = return_edited_geojson(base_gjson,out_field,df[out_field].tolist())
     return render_template("render_data.html",weighted_df = df.to_html(),json=data)
 
 @app.route('/', methods=['POST'])

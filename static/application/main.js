@@ -45,24 +45,40 @@ function styleColor(feature) {
     };
 }
 
-var network = $.getJSON('static/application/data/WestValleyATPNetworkServed.geojson',function(data){
-L.geoJSON(data,{style:styleColor}).addTo(map)});
+var customPopUpOptions =
+        {
+        'maxWidth': '500',
+        'className' : 'customPopUp'
+        }
+
+function setupPopUp(f,l){
+    var out = [];
+    if (f.properties){
+        for(key in f.properties){
+            out.push(key+": "+f.properties[key]);
+        }
+        l.bindPopup(out.join("<br />"),customPopUpOptions);
+    }
+}
+
+var networkLayer = new L.GeoJSON.AJAX('static/application/data/WestValleyATPNetwork.geojson',{style:styleColor,onEachFeature:setupPopUp}).addTo(map);
 
 var legend = L.control({position: 'bottomright'});
 
+
+
 legend.onAdd = function (map) {
 
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [1,2,3],
-        labels = ["Low","Medium","High"],
-        title = '<strong> Prioritization Scores </strong>';
+var div = L.DomUtil.create('div', 'info legend'),
+    grades = [1,2,3],
+    labels = ["Low","Medium","High"],
+    title = '<strong> Prioritization Scores </strong>';
 
-    // loop through our density intervals and generate a label with a colored square for each interval
-    div.innerHTML= title+ "<br> <br>"
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + colorScale(grades[i]) + '"></i> ' + labels[i] + '<br>';
-    }
+div.innerHTML= title+ "<br> <br>"
+for (var i = 0; i < grades.length; i++) {
+    div.innerHTML +=
+        '<i style="background:' + colorScale(grades[i]) + '"></i> ' + labels[i] + '<br>';
+}
 
     return div;
 };
