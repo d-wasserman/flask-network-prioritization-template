@@ -60,8 +60,9 @@ function setupPopUp(f,l){
         l.bindPopup(out.join("<br />"),customPopUpOptions);
     }
 }
+const filePath = "static/application/data/WestValleyATPNetwork.geojson"
 
-var networkLayer = new L.GeoJSON.AJAX('static/application/data/WestValleyATPNetwork.geojson',{style:styleColor,onEachFeature:setupPopUp}).addTo(map);
+var networkLayer = new L.GeoJSON.AJAX(filePath,{style:styleColor,onEachFeature:setupPopUp}).addTo(map);
 
 var legend = L.control({position: 'bottomright'});
 

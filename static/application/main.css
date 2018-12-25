@@ -113,38 +113,39 @@ html, body {
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
 .slider::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none; 
   appearance: none;
-  width: 25px; /* Set a specific slider handle width */
-  height: 30px; /* Slider handle height */
+  width: 25px; 
+  height: 30px; 
   background: #de0303; /* Reddish background */
-  cursor: pointer; /* Cursor on hover */
+  cursor: pointer; 
   border-radius:10px;
 }
+
+.slider::-moz-range-thumb {
+  width: 40px; 
+  height: 30px; 
+  background: #de0303; /* Reddish background */
+  cursor: pointer; 
+  border-radius:10px;
+}
+
 .slider::-webkit-slider-thumb:hover{
-    background:#FA4616;
+    background:#ffb65d;
     transition-property:background border;
     transition-duration: .25s;
     transition-timing-function: linear;
-    border:4px solid #0021A5;
+    border:4px solid #de0303;
     height:40px;
     border-radius:15px;
 }
 
-.slider::-moz-range-thumb {
-  width: 40px; /* Set a specific slider handle width */
-  height: 30px; /* Slider handle height */
-  background: #fe0e0e; /* Reddish background */
-  cursor: pointer; /* Cursor on hover */
-  border-radius:10px;
-}
-
 .slider::-moz-range-thumb:hover{
-    background:#FA4616;
+    background:#ffb65d;
     transition-property: background border;
     transition-duration: .25s;
     transition-timing-function: linear;
-    border:4px solid #0021A5;
+    border:4px solid #de0303;
     height:40px;
     border-radius:15px;
 }

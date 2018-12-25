@@ -1,7 +1,7 @@
 # Name: app.py
 # Purpose: Flask App Python File
 # Author: David Wasserman
-# Last Modified: 12/16/2018
+# Last Modified: 12/26/2018
 # Copyright: David Wasserman
 # Python Version:   3.6
 # --------------------------------
@@ -92,12 +92,20 @@ def return_edited_geojson(gjson_path,property,values):
     """
     with open(gjson_path) as file:
         data = json.load(file)
-        for idx,feature in enumerate(data["features"]):
+        for idx,feature in enumerate(data["features"]): # Pass by reference
             dict = feature["properties"]
             dict[property] = values[idx]
     return data
 
-
+def get_weights(weight_names):
+    """Given a list of html id names, return the values of the input forms as a dictionary
+    @:param weight_fields - list of strings of names
+    @:return weight_dictionary - dictionary of string names and their weights"""
+    weight_dictionary={}
+    for weight_id in weight_names:
+        weight = float(request.form[weight_id])
+        weight_dictionary[weight_id]= weight
+    return weight_dictionary
 
 # App
 @app.route("/")
@@ -110,7 +118,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/network_geojson")
+@app.route("/api/network_geojson.geojson")
 def reweighted_geojson():
     """
     Returns reweighted geojson data to app.
@@ -124,8 +132,8 @@ def reweighted_geojson():
     data = return_edited_geojson(base_gjson,out_field,df[out_field].tolist())
     return jsonify(data)
 
-@app.route("/test")
-def testing_function():
+@app.route("/test",methods=["POST"])
+def test():
     """
     Returns reweighted geojson data to app.
     :param: None
@@ -133,21 +141,12 @@ def testing_function():
     """
     df = get_df_from_geojson_properties(base_gjson)
     df = df[fields]
+    weight_dict = {}
     # weight_dict = get_weights(weight_names)
-    df = weighted_sum(df, fields, weights, out_field)
-    data = return_edited_geojson(base_gjson,out_field,df[out_field].tolist())
-    return render_template("render_data.html",weighted_df = df.to_html(),json=data)
+    return render_template("render_data.html",weighted_df = weight_dict)
 
-@app.route('/', methods=['POST'])
-def get_weights(weight_fields):
-    """Given a list of html id names, return the values of the input forms as a dictionary
-    @:param weight_fields - list of strings of names
-    @:return weight_dictionary - dictionary of string names and their weights"""
-    weight_dictionary={}
-    for weight_id in weight_fields:
-        weight = request.form[weight_id]
-        weight_dictionary[weight_id]=weight
-    return weight_dictionary
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
