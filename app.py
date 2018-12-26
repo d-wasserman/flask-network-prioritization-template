@@ -83,7 +83,7 @@ def weighted_sum(df, value_columns, weights, new_output_column="WeightedSum",sum
     return df
 
 def return_edited_geojson(gjson_path,property,values):
-    """This function will return a geojson load with properties edited based on a passed property name, and
+    """This function will return a geojson data with properties edited based on a passed property name, and
     and ordered list of values.
     :param gjson_path - path to input
     :param property - name of property to replace
