@@ -132,7 +132,7 @@ def reweighted_geojson():
     data = return_edited_geojson(base_gjson,out_field,df[out_field].tolist())
     return jsonify(data)
 
-@app.route("/test",methods=["POST"])
+@app.route("/test",methods=["GET","POST"])
 def test():
     """
     Returns reweighted geojson data to app.
@@ -142,8 +142,8 @@ def test():
     df = get_df_from_geojson_properties(base_gjson)
     df = df[fields]
     weight_dict = {}
-    # weight_dict = get_weights(weight_names)
-    return render_template("render_data.html",weighted_df = weight_dict)
+    df = weighted_sum(df, fields, weights, out_field)
+    return render_template("render_data.html",weighted_df = df.to_html())
 
 
 

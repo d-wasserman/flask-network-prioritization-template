@@ -60,9 +60,10 @@ function setupPopUp(f,l){
         l.bindPopup(out.join("<br />"),customPopUpOptions);
     }
 }
-const filePath = "static/application/data/WestValleyATPNetwork.geojson"
+const filePath = "static/application/data/WestValleyATPNetwork.geojson" //Use for static reference
+const serviceURL = "api/network_geojson.geojson" // Use for dynamic weighted reference
 
-var networkLayer = new L.GeoJSON.AJAX(filePath,{style:styleColor,onEachFeature:setupPopUp}).addTo(map);
+var networkLayer = new L.GeoJSON.AJAX(serviceURL,{style:styleColor,onEachFeature:setupPopUp}).addTo(map);
 
 var legend = L.control({position: 'bottomright'});
 
