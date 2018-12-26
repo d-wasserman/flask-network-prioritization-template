@@ -1,6 +1,6 @@
 // Main Application JS File
 
-var map = L.map('map').setView([40.693806, -112.015608], 13);
+var map = L.map('map').setView([40.688, -112.00], 13);
 
 //Add Base Maps
 var stamenAttribution = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
