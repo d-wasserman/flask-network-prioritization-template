@@ -81,27 +81,31 @@ legend.onAdd = function (map) {
 var div = L.DomUtil.create('div', 'info legend'),
     grades = [1,2,3],
     labels = ["Low","Medium","High"],
-    title = '<strong> Prioritization Scores </strong>';
+    title = '<h6><strong> Prioritization Scores </strong></h6>';
 
-div.innerHTML= title+ "<br> <br>"
+div.innerHTML=  title + "<br>"
 for (var i = 0; i < grades.length; i++) {
     div.innerHTML +=
-        '<i style="background:' + colorScale(grades[i]) + '"></i> ' + labels[i] + '<br>';
+        '<i style="background:' + colorScale(grades[i]) + '"></i> ' + '<h6 class="legendText">' + labels[i] + '</h6>' + '<br>';
 }
-
     return div;
 };
 
 legend.addTo(map);
 
-//Refresh function - assume map global access
-function refreshLayer(lfLayer,path,options) {
-    lfLayer.clearLayers();
-    L.GeoJSON.AJAX(path,options).addTo(map);
-	
-};
+// Refresh Geojson Service on Slider Change
 
-// Post Form on Slider Change
+//function refreshLayer(lfLayer,path,options,mapLayer) {
+//    lfLayer.clearLayers();
+//    L.GeoJSON.AJAX(path,options).addTo(mapLayer);
+//	
+//};
+
+//var slid = document.getElementById("rangeSlider");
+//
+//slid.onchange = function() {refreshLayer(networkLayer,serviceURL,networkOptions,map)};
+
+
 $(function(){
     var form = $('form');
     $('#rangeSlider').on('change mouseup', function(){
