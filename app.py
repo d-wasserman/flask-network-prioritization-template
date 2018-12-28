@@ -24,6 +24,7 @@ import sys, os, json
 import pandas as pd
 from flask import Flask, render_template, jsonify
 from flask import request
+from flask import redirect,url_for
 from flask_sqlalchemy import SQLAlchemy
 
 # Paths
@@ -38,7 +39,8 @@ fields = ["PedConnect_Score", "LSBikConnect_Score", "Strava_Score", "UCATWKUse_S
           "Bike_Ln_Score", "Crss_WK_Score", "SidWlk_Score", "Safety_Score"]
 weight_names = ["pedconnectivity", "bikeconnectivity", "strava", "ucatsped", "ucatsbicycle",
           "bikelane", "crosswalk", "sidewalk", "safety"] # same order as weights
-weights = [.1,.1,.0375,.125,.0875,.1,.1,.1,.25] # must be in same order as weight_names
+weights = [10,10,37.5,12.5,8.75,10,10,10,25] # must be in same order as weight_names
+weight_dictionary = {i:j for i,j in zip(weight_names,weights)}
 out_field = "Priority_Score"
 # Config
 app = Flask(__name__)
@@ -116,7 +118,7 @@ def index():
     :param None
     :return render template - html base
     """
-    return render_template("index.html")
+    return render_template("index.html",**weight_dictionary)
 
 
 @app.route("/api/network_geojson.geojson")
@@ -140,12 +142,14 @@ def revised_weights():
     :return weights
     """
     global weights
+    global weight_dictionary
     if request.method == 'POST':
         weight_list = get_weights(weight_names)
     else:
         weight_list = weights
     weights = weight_list
-    return render_template("index.html")
+    weight_dictionary = {i:j for i,j in zip(weight_names,weights)}
+    return redirect(url_for('index',**weight_dictionary))
 
 
 
