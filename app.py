@@ -39,7 +39,7 @@ fields = ["PedConnect_Score", "LSBikConnect_Score", "Strava_Score", "UCATWKUse_S
           "Bike_Ln_Score", "Crss_WK_Score", "SidWlk_Score", "Safety_Score"]
 weight_names = ["pedconnectivity", "bikeconnectivity", "strava", "ucatsped", "ucatsbicycle",
           "bikelane", "crosswalk", "sidewalk", "safety"] # same order as weights
-weights = [10,10,37.5,12.5,8.75,10,10,10,25] # must be in same order as weight_names
+weights = [10,10,3.75,12.5,8.75,10,10,10,25] # must be in same order as weight_names
 weight_dictionary = {i:j for i,j in zip(weight_names,weights)}
 out_field = "Priority_Score"
 # Config
