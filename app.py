@@ -36,9 +36,9 @@ base_gjson = os.path.join(data_dir, "WestValleyATPNetwork.geojson")
 
 fields = ["PedConnect_Score", "LSBikConnect_Score", "Strava_Score", "UCATWKUse_Score", "UCATBKUse_Score",
           "Bike_Ln_Score", "Crss_WK_Score", "SidWlk_Score", "Safety_Score"]
-weight_names = ["pedconnectivity", "bikeconnectivity", "strava", "ucatswalk", "ucatsbike",
-          "bikelane", "crosswalk", "sidewalk", "safety"]
-weights = [.1,.1,.0375,.125,.0875,.1,.1,.1,.25]
+weight_names = ["pedconnectivity", "bikeconnectivity", "strava", "ucatsped", "ucatsbicycle",
+          "bikelane", "crosswalk", "sidewalk", "safety"] # same order as weights
+weights = [.1,.1,.0375,.125,.0875,.1,.1,.1,.25] # must be in same order as weight_names
 out_field = "Priority_Score"
 # Config
 app = Flask(__name__)
@@ -98,14 +98,15 @@ def return_edited_geojson(gjson_path,property,values):
     return data
 
 def get_weights(weight_names):
-    """Given a list of html id names, return the values of the input forms as a dictionary
+    """Given a list of html id names, return the values of the input forms as a list in the
+    same order as weight names
     @:param weight_fields - list of strings of names
     @:return weight_dictionary - dictionary of string names and their weights"""
-    weight_dictionary={}
+    weight_list = []
     for weight_id in weight_names:
         weight = float(request.form[weight_id])
-        weight_dictionary[weight_id]= weight
-    return weight_dictionary
+        weight_list.append(weight)
+    return weight_list
 
 # App
 @app.route("/")
@@ -127,23 +128,24 @@ def reweighted_geojson():
     """
     df = get_df_from_geojson_properties(base_gjson)
     df = df[fields]
-    # weight_dict = get_weights(weight_names)
     df = weighted_sum(df, fields, weights, out_field)
     data = return_edited_geojson(base_gjson,out_field,df[out_field].tolist())
     return jsonify(data)
 
-@app.route("/test",methods=["GET","POST"])
-def test():
+@app.route("/revised_weights",methods=["GET","POST"])
+def revised_weights():
     """
     Returns reweighted geojson data to app.
     :param: None
-    :return geojson - network data edited
+    :return weights
     """
-    df = get_df_from_geojson_properties(base_gjson)
-    df = df[fields]
-    weight_dict = {}
-    df = weighted_sum(df, fields, weights, out_field)
-    return render_template("render_data.html",weighted_df = df.to_html())
+    global weights
+    if request.method == 'POST':
+        weight_list = get_weights(weight_names)
+    else:
+        weight_list = weights
+    weights = weight_list
+    return render_template("index.html")
 
 
 

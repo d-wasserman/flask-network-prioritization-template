@@ -157,3 +157,17 @@ h6.legendText {
     height:40px;
     border-radius:15px;
 }
+
+input[type=submit] {
+  	display: block;
+	margin: 0 auto;
+	background-color: #f47029;
+	border: 2px solid white;
+	border-radius: 10px;
+  	color: white;
+  	padding: 16px;
+	text-decoration: none;
+  	cursor: pointer;
+  	align-self: center;
+	font-weight:bold;
+}
