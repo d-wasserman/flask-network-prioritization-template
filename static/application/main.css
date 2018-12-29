@@ -160,12 +160,13 @@ h6.legendText {
 
 input[type=submit] {
   	display: block;
-	margin: 0 auto;
+	margin: 0px auto;
+	margin-top: 20px;
 	background-color: #f47029;
 	border: 2px solid white;
 	border-radius: 10px;
   	color: white;
-  	padding: 16px;
+  	padding: 10px;
 	text-decoration: none;
   	cursor: pointer;
   	align-self: center;
