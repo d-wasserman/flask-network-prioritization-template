@@ -93,27 +93,16 @@ for (var i = 0; i < grades.length; i++) {
 
 legend.addTo(map);
 
-// Refresh Geojson Service on Slider Change
+// Create Sum of Elements
 
-//function refreshLayer(lfLayer,path,options,mapLayer) {
-//    lfLayer.clearLayers();
-//    L.GeoJSON.AJAX(path,options).addTo(mapLayer);
-//	
-//};
+//var fields = $(".output").change(recomputeWeightSum);
 
-//var slid = document.getElementById("rangeSlider");
-//
-//slid.onchange = function() {refreshLayer(networkLayer,serviceURL,networkOptions,map)};
-
-
-$(function(){
-    var form = $('form');
-    $('#rangeSlider').on('change mouseup', function(){
-        $.ajax({
-            type: "POST",
-            url: form.action,
-            data: form.serialize(),
-        }).done(function(res){
-        });
-    });
+var sliderOutputSum = 0; 
+$(".output").each(function(){
+	sliderOutputSum += parseFloat($(this).text());
+	return sliderOutputSum
 });
+
+$("h6.sliderTotalSum").text(sliderOutputSum).append(" %"); 
+
+

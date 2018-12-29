@@ -94,7 +94,13 @@
                 <input type="range" min="0" max="100" value="{{pedconnectivity | safe}}" step="0.05" class="slider" name = "pedconnectivity" id="rangeslider" oninput="pedconnectivityOutputId.value = pedconnectivity.value" >
             </div>
         </div>
-		<input type="submit" value="Reweight Analysis">
+		<div>
+			<input type="submit" value="Reweight Analysis">
+			<div class="sliderTotal">
+				<h6>Sum of Weights</h6>
+				<h6 class=sliderTotalSum>100</h6> 
+			</div>
+		</div>
         </form>
      </nav>
     </div>   
