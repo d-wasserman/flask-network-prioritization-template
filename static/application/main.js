@@ -1,5 +1,10 @@
 // Main Application JS File
 
+//Jquery Ready
+$( document ).ready(function() {
+  console.log( 'Document Ready' );
+});
+
 //Establish Key Variables/Const
 const filePath = "static/application/data/WestValleyATPNetwork.geojson"; //Use for static reference
 const serviceURL = "api/network_geojson.geojson"; // Use for dynamic weighted reference
@@ -94,15 +99,15 @@ for (var i = 0; i < grades.length; i++) {
 legend.addTo(map);
 
 // Create Sum of Elements
+ 
+function recomputeWeightedSum(){
+	var sliderOutputSum = 0;
+	$(".output").each(function(){
+		sliderOutputSum += parseFloat($(this).text());
+		return sliderOutputSum
+	});
+	$("h6.sliderTotalSum").text(sliderOutputSum.toFixed(2)).append(" %"); 
+};
 
-//var fields = $(".output").change(recomputeWeightSum);
-
-var sliderOutputSum = 0; 
-$(".output").each(function(){
-	sliderOutputSum += parseFloat($(this).text());
-	return sliderOutputSum
-});
-
-$("h6.sliderTotalSum").text(sliderOutputSum).append(" %"); 
-
-
+recomputeWeightedSum(); //Initial Set up
+$(".slider").change(recomputeWeightedSum); // On Change
