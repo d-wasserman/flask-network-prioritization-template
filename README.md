@@ -9,6 +9,18 @@ Part of the motivation for this project is to start 2019 by celebrating the 50th
 
 ![alt text](https://github.com/d-wasserman/flask-network-prioritization-template/blob/master/static/application/assets/Template_Screenshot.gif "Network Priorization Example")
 
- 
-	 
- 
+# Build Information
+
+This template is built using [Flask](http://flask.pocoo.org/) to build the application backend, and the following CSS/JS libraries/frameworks for the frontend. 
+
+* Bootstrap 4.0.0 (Via CDN)
+
+* leaflet 1.3.4
+
+* chroma-js 2.0.2
+
+* jquery 3.3.1
+
+* leaflet-ajax 2.1.0
+
+* lie 3.0.1
