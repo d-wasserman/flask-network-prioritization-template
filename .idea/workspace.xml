@@ -14,8 +14,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="764">
-              <caret line="134" column="24" lean-forward="true" selection-start-line="124" selection-start-column="25" selection-end-line="127" selection-end-column="16" />
+            <state relative-caret-position="280">
+              <caret line="146" column="47" lean-forward="true" selection-start-line="146" selection-start-column="47" selection-end-line="146" selection-end-column="47" />
               <folding>
                 <element signature="e#824#844#0" expanded="true" />
               </folding>
@@ -142,6 +142,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12219287" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -178,6 +179,16 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2814">
+          <caret line="134" column="24" lean-forward="true" selection-start-line="124" selection-start-column="25" selection-end-line="127" selection-end-column="16" />
+          <folding>
+            <element signature="e#824#844#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2499">
@@ -392,8 +403,8 @@
     <entry file="file://$PROJECT_DIR$/app_Bu.py" />
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
-          <caret line="134" column="24" lean-forward="true" selection-start-line="124" selection-start-column="25" selection-end-line="127" selection-end-column="16" />
+        <state relative-caret-position="280">
+          <caret line="146" column="47" lean-forward="true" selection-start-line="146" selection-start-column="47" selection-end-line="146" selection-end-column="47" />
           <folding>
             <element signature="e#824#844#0" expanded="true" />
           </folding>
