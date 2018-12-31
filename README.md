@@ -1,5 +1,6 @@
 # flask-network-prioritization-template
 
+A sample application using flask and leafet to enable dynamic changes to weights for an arbitrary multicriteria analysis. Inspired by Ian McHargs work on overlay analysis as a method of managing complexity and reflecting human values in planning for human settlement. 
 
 # Summary
 
