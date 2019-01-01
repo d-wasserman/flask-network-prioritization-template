@@ -25,7 +25,14 @@ import pandas as pd
 from flask import Flask, render_template, jsonify
 from flask import request
 from flask import redirect,url_for
-from flask_sqlalchemy import SQLAlchemy
+
+# Config
+app = Flask(__name__)
+
+### DB Config - not used
+# from flask_sqlalchemy import SQLAlchemy
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+# db = SQLAlchemy(app)
 
 # Paths
 file_dir = os.path.dirname(os.path.realpath('__file__'))
@@ -42,13 +49,6 @@ weight_names = ["pedconnectivity", "bikeconnectivity", "strava", "ucatsped", "uc
 weights = [10,10,3.75,12.5,8.75,10,10,10,25] # must be in same order as weight_names
 weight_dictionary = {i:j for i,j in zip(weight_names,weights)}
 out_field = "Priority_Score"
-# Config
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-
-db = SQLAlchemy(app)
-
-
 # Functions
 
 def get_df_from_geojson_properties(geojson_path):
