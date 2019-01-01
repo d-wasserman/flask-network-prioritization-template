@@ -20,7 +20,7 @@
 # limitations under the License.
 # --------------------------------
 # Library Import
-import sys, os, json
+import os, json
 import pandas as pd
 from flask import Flask, render_template, jsonify
 from flask import request
