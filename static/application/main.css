@@ -35,6 +35,7 @@ h6.legendText {
 	display: inline;
 }
 
+
 .box {
   border: 1px solid #EEE;
   margin: 3px;
@@ -68,7 +69,7 @@ h6.legendText {
   position: fixed;
   left: 0;
   background-color: #111;
-  overflow-x: hidden;
+  overflow-x: scroll;
   padding:15px;
 }
 
@@ -76,15 +77,21 @@ h6.legendText {
     color:white;
     text-transform: uppercase;
     text-align: left;
-    display:inline;
+	display: inline-block;
+	width: 80%;
+	margin-bottom: 6px;
 }
 
+.variableContainer{
+	display:inline;
+}
 
 /* Slider Style */
 
 .slidecontainer {
   width: 100%; /* Width of the outside container */
-  margin-top:12px;
+  height:20px;
+  margin-top:6px;
   margin-bottom: 6px;
 }
 
@@ -105,12 +112,17 @@ h6.legendText {
 
 .output { 
     color:black;
-    text-align:center;
+	display: inline-block;
+	align-content: right;
+    position: absolute;
+	text-align: center;
+	justify-content: center;
     background:white;
-    display:inline;
-    float:right;
+	min-width: 40px;
+	width: 15%;
+	right:4px;
     border-radius:10px;
-    border:4px solid white;    
+    border:2px solid white;
 }
 
 
@@ -121,8 +133,9 @@ h6.legendText {
     display:inline;
     float:right;
     border-radius:10px;
-    border:4px solid white;
-	margin-top: 20px;
+    border:2px solid white;
+	margin-top: 10px;
+	margin-bottom: 0px;
 }
 
 
@@ -169,11 +182,13 @@ h6.legendText {
     height:40px;
     border-radius:15px;
 }
+ 
+/* Submission button */
 
 input[type=submit] {
   	display: inline;
 	margin: 0px auto;
-	margin-top: 20px;
+	margin-top: 10px;
 	background-color: #f47029;
 	border: 2px solid white;
 	border-radius: 10px;
