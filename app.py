@@ -22,12 +22,13 @@
 # Library Import
 import os, json
 import pandas as pd
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify,session
 from flask import request
 from flask import redirect,url_for
 
 # Config
 app = Flask(__name__)
+app.secret_key = os.urandom(24) # Random Key Generated for Sessions
 
 ### DB Config - not used
 # from flask_sqlalchemy import SQLAlchemy
@@ -40,15 +41,6 @@ static_dir = os.path.join(file_dir, "static")
 application_dir = os.path.join(static_dir, "application")
 data_dir = os.path.join(application_dir, "data")
 base_gjson = os.path.join(data_dir, "WestValleyATPNetwork.geojson")
-# Variables
-
-fields = ["PedConnect_Score", "LSBikConnect_Score", "Strava_Score", "UCATWKUse_Score", "UCATBKUse_Score",
-          "Bike_Ln_Score", "Crss_WK_Score", "SidWlk_Score", "Safety_Score"]
-weight_names = ["pedconnectivity", "bikeconnectivity", "strava", "ucatsped", "ucatsbicycle",
-          "bikelane", "crosswalk", "sidewalk", "safety"] # same order as weights
-weights = [10.0,10.0,3.75,12.5,8.75,10.0,10.0,10.0,25.0] # must be in same order as weight_names
-weight_dictionary = {i:j for i,j in zip(weight_names,weights)}
-out_field = "Priority_Score"
 # Functions
 
 def get_df_from_geojson_properties(geojson_path):
@@ -118,6 +110,22 @@ def index():
     :param None
     :return render template - html base
     """
+    if "dict" not in session:
+        # Default Variables [Change as needed]
+        fields = ["PedConnect_Score", "LSBikConnect_Score", "Strava_Score", "UCATWKUse_Score", "UCATBKUse_Score",
+                  "Bike_Ln_Score", "Crss_WK_Score", "SidWlk_Score", "Safety_Score"]
+        weight_names = ["pedconnectivity", "bikeconnectivity", "strava", "ucatsped", "ucatsbicycle",
+                        "bikelane", "crosswalk", "sidewalk", "safety"]  # same order as weights
+        weights = [10.0, 10.0, 3.75, 12.5, 8.75, 10.0, 10.0, 10.0, 25.0]  # must be in same order as weight_names
+        weight_dictionary = {i: j for i, j in zip(weight_names, weights)}
+        out_field = "Priority_Score"
+        session["weights"] = weights
+        session["weight_names"] = weight_names
+        session["fields"] = fields
+        session["new_column"] = out_field
+        session["dict"] = weight_dictionary
+    else:
+        weight_dictionary = session["dict"]
     return render_template("index.html",**weight_dictionary)
 
 
@@ -129,9 +137,9 @@ def reweighted_geojson():
     :return geojson - network data edited
     """
     df = get_df_from_geojson_properties(base_gjson)
-    df = df[fields]
-    df = weighted_sum(df, fields, weights, out_field)
-    data = return_edited_geojson(base_gjson,out_field,df[out_field].tolist())
+    df = df[session["fields"]]
+    df = weighted_sum(df,session["fields"], session["weights"], session["new_column"])
+    data = return_edited_geojson(base_gjson,session["new_column"],df[session["new_column"]].tolist())
     return jsonify(data)
 
 @app.route("/revised_weights",methods=["GET","POST"])
@@ -141,15 +149,13 @@ def revised_weights():
     :param: None
     :return weights
     """
-    global weights
-    global weight_dictionary
     if request.method == 'POST':
-        weight_list = get_weights(weight_names)
+        weight_list = get_weights(session["weight_names"])
     else:
-        weight_list = weights
-    weights = weight_list
-    weight_dictionary = {i:j for i,j in zip(weight_names,weights)}
-    return redirect(url_for('index',**weight_dictionary))
+        weight_list = session["weights"]
+    session["weights"] = weight_list
+    weight_dictionary = {i:j for i,j in zip(session["weight_names"],session["weights"])}
+    return render_template("index.html",**weight_dictionary)
 
 
 
