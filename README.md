@@ -34,7 +34,7 @@ This template uses the following CSS/JS libraries/frameworks for the frontend.
 
 ## Backend
 
-The backend environment is set up via conda (or pip) and uses Python version 3.6. The dependencies are listed below. 
+The backend environment is uses [Flask](http://flask.pocoo.org/) for app deployment. The python environment used is set up via conda (or pip) using Python version 3.6. The dependencies are listed below. 
 
 * certifi=2018.11.29=py36_1000
 * click=7.0=py_0
