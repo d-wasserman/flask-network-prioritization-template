@@ -79,6 +79,9 @@ h6.legendText {
   color:white;
   border: 4px solid gray;
   opacity: 1;
+  transition-property:background border;
+  transition-duration: .25s;
+  transition-timing-function: linear;
 }
 
 /* Nav & Sidebar Styles */
@@ -141,11 +144,11 @@ h6.legendText {
 	text-align: center;
 	justify-content: center;
     background:white;
-	min-width: 40px;
-	width: 15%;
-	right:4px;
+	min-width: 30px;
+	width: 12%;
+	right: 5px;
+	margin-bottom: 6px;
     border-radius:10px;
-    border:2px solid white;
 }
 
 
@@ -157,7 +160,7 @@ h6.legendText {
     float:right;
     border-radius:10px;
     border:2px solid white;
-	margin-top: 10px;
+	margin-top: 12px;
 	margin-bottom: 0px;
 }
 
@@ -171,16 +174,16 @@ h6.legendText {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none; 
   appearance: none;
-  width: 25px; 
-  height: 30px; 
+  width: 22px; 
+  height: 28px; 
   background: #de0303; /* Reddish background */
   cursor: pointer; 
   border-radius:10px;
 }
 
 .slider::-moz-range-thumb {
-  width: 40px; 
-  height: 30px; 
+  width: 22px; 
+  height: 28px; 
   background: #de0303; /* Reddish background */
   cursor: pointer; 
   border-radius:10px;
@@ -191,8 +194,8 @@ h6.legendText {
     transition-property:background border;
     transition-duration: .25s;
     transition-timing-function: linear;
-    border:4px solid #de0303;
-    height:40px;
+    border:3px solid #de0303;
+    height:33px;
     border-radius:15px;
 }
 
@@ -201,8 +204,8 @@ h6.legendText {
     transition-property: background border;
     transition-duration: .25s;
     transition-timing-function: linear;
-    border:4px solid #de0303;
-    height:40px;
+    border:3px solid #de0303;
+    height:33px;
     border-radius:15px;
 }
  
