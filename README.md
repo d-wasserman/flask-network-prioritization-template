@@ -14,7 +14,11 @@ Part of the motivation for this project is to start 2019 by celebrating the 50th
 
 # Build Information
 
-This template is built using [Flask](http://flask.pocoo.org/) to build the application backend, and the following CSS/JS libraries/frameworks for the frontend. 
+The dependencies and frameworks used in this template are listed below. 
+
+## Frontend
+
+This template uses the following CSS/JS libraries/frameworks for the frontend. 
 
 * Bootstrap 4.0.0 (Via CDN)
 
@@ -27,3 +31,33 @@ This template is built using [Flask](http://flask.pocoo.org/) to build the appli
 * leaflet-ajax 2.1.0
 
 * lie 3.0.1
+
+## Backend
+
+The backend environment is set up via conda (or pip) and uses Python version 3.6. The dependencies are listed below. 
+
+* certifi=2018.11.29=py36_1000
+* click=7.0=py_0
+* flask=1.0.2=py_2
+* flask-sqlalchemy=2.3.2=py_0
+* itsdangerous=1.1.0=py_0
+* jinja2=2.10=py_1
+* markupsafe=1.1.0=py36hfa6e2cd_1000
+* pandas=0.23.4=py36h830ac7b_1000
+* pip=18.1=py36_1000
+* python=3.6.6=he025d50_0
+* python-dateutil=2.7.5=py_0
+* pytz=2018.7=py_0
+* setuptools=40.6.3=py36_0
+* six=1.12.0=py36_1000
+* sqlalchemy=1.2.15=py36hfa6e2cd_1000
+* vc=14=0
+* vs2015_runtime=14.0.25420=0
+* werkzeug=0.14.1=py_0
+* wheel=0.32.3=py36_0
+* wincertstore=0.2=py36_1002
+* blas=1.0=mkl
+* mkl=2017.0.3=0
+* numpy=1.13.1=py36_0
+
+
