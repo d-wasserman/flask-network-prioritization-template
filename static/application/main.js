@@ -125,4 +125,4 @@ function recomputeWeightedSum(){
 };
 
 recomputeWeightedSum(); //Initial Set up
-$(".slider").change(recomputeWeightedSum); // On Change
+$(".slider").on("input",recomputeWeightedSum); // On Change
