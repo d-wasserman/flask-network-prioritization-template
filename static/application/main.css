@@ -87,6 +87,7 @@ h6.legendText {
 /* Nav & Sidebar Styles */
 .navbar {
   height:8%;
+  min-height: 45px;
 }    
 
 .sidebar-nav {
