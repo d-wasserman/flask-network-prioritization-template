@@ -14,8 +14,8 @@
       <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="66" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="294">
+              <caret line="80" column="31" lean-forward="true" selection-start-line="80" selection-start-column="31" selection-end-line="80" selection-end-column="31" />
               <folding>
                 <element signature="e#824#839#0" expanded="true" />
               </folding>
@@ -146,7 +146,7 @@
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12219287" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25528914" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25528914" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32863188" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -629,8 +629,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="294">
+          <caret line="80" column="31" lean-forward="true" selection-start-line="80" selection-start-column="31" selection-end-line="80" selection-end-column="31" />
           <folding>
             <element signature="e#824#839#0" expanded="true" />
           </folding>

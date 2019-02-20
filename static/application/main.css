@@ -1,6 +1,7 @@
 /* Global Styles */
 html, body {
    height: 100%;
+   background:#343a40;
 }
 
 
@@ -91,12 +92,12 @@ h6.legendText {
 }    
 
 .sidebar-nav {
-  height: 100%;
+  height: 92%;
   width: 25%;
   position: fixed;
   left: 0;
   background-color: #111;
-  overflow-x: scroll;
+  overflow-y: auto;
   padding:15px;
 }
 
