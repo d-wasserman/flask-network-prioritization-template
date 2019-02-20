@@ -29,11 +29,11 @@ html, body {
 }
 
 h6.legendText {
-	margin-top: 0px;
-	margin-bottom: 0px;
-	padding-bottom: 0px;
-	padding-top: 0px;
-	display: inline;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    display: inline;
 }
 
 
@@ -88,9 +88,13 @@ h6.legendText {
 /* Nav & Sidebar Styles */
 .navbar {
   height:8%;
-  min-height: 45px;
+  padding-top:4px;
+  
 }    
-
+.navbar-brand {
+    padding:0;
+    font-size: calc(10px + 1.25vh);   
+}
 .sidebar-nav {
   height: 92%;
   width: 25%;
@@ -102,16 +106,17 @@ h6.legendText {
 }
 
 .sidebar-nav p {
+    font-size: calc(10px + 0.5vh);
     color:white;
     text-transform: uppercase;
     text-align: left;
-	display: inline-block;
-	width: 80%;
-	margin-bottom: 6px;
+    display: inline-block;
+    width: 80%;
+    margin-bottom: 6px;
 }
 
 .variableContainer{
-	display:inline;
+    display:inline;
 }
 
 /* Slider Style */
@@ -139,17 +144,19 @@ h6.legendText {
 }
 
 .output { 
+    font-size: calc(10px + 0.5vh);
+    heignt:4em;
     color:black;
-	display: inline-block;
-	align-content: right;
+    display: inline-block;
+    align-content: right;
     position: absolute;
-	text-align: center;
-	justify-content: center;
+    text-align: center;
+    justify-content: center;
     background:white;
-	min-width: 40px;
-	width: 12%;
-	right: 5px;
-	margin-bottom: 6px;
+    min-width: 40px;
+    width: 12%;
+    right: 5px;
+    margin-bottom: 6px;
     border-radius:10px;
 }
 
@@ -162,8 +169,8 @@ h6.legendText {
     float:right;
     border-radius:10px;
     border:4px solid white;
-	margin-top: 10px;
-	margin-bottom: 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 
 h6.sliderTotalSum {
@@ -217,16 +224,16 @@ h6.sliderTotalSum {
 /* Submission button */
 
 input[type=submit] {
-  	display: inline;
-	margin: 0px auto;
-	margin-top: 10px;
-	background-color: #f47029;
-	border: 2px solid white;
-	border-radius: 10px;
-  	color: white;
-  	padding: 10px;
-	text-decoration: none;
-  	cursor: pointer;
-  	align-self: center;
-	font-weight:bold;
+      display: inline;
+    margin: 0px auto;
+    margin-top: 10px;
+    background-color: #f47029;
+    border: 2px solid white;
+    border-radius: 10px;
+      color: white;
+      padding: 10px;
+    text-decoration: none;
+      cursor: pointer;
+      align-self: center;
+    font-weight:bold;
 }
