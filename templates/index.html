@@ -18,109 +18,109 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{url_for('static', filename='leaflet/dist/leaflet.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='application/main.css')}}">
-    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.3"></script>
     <!--Flask/Jinja Data-->
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark navbar-fixed-top">
-        <a class="navbar-brand mb-0 p" href="#">Network Prioritization</a>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand mb-0 h1" href="#">Network Prioritization</a>
         <a class="navbar-brand mb-0 p" href="#">West Valley Active Transportation Plan</a>
     </nav>
-    <div>
-        <nav class="sidebar-nav navbar-dark bg-dark">
-            <form id="sliderForm" method="POST" action="{{url_for('revised_weights')}}">
-            <div class="variableContainer">
-                <p>Strava Usage</p>
-                <output class="output" name="strava-text" id="stravaOutputId">{{strava | safe}} </output>
+
+    <nav class="sidebar-nav navbar-dark bg-dark">
+        <form id="sliderForm" method="POST" action="{{url_for('revised_weights')}}">
+		<div class="variableContainer">
+			<p>Strava Usage</p>
+			<output class="output" name="strava-text" id="stravaOutputId">{{strava | safe}} </output>
+		</div>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="0" max="100" value="{{strava | safe}}" step="0.25" class="slider" id="rangeslider" name="strava" oninput="stravaOutputId.value = strava.value">
             </div>
-            <div class="slidecontainer">
-                <div class="slider">
-                    <input type="range" min="0" max="100" value="{{strava | safe}}" step="0.25" class="slider" id="rangeslider" name="strava" oninput="stravaOutputId.value = strava.value"> 
-                </div>
+        </div>
+		<div class="variableContainer">
+			<p>UCATS Bicycle Index</p>
+			<output class="output" name="ucats-bicycle-text" id="ucatsbicycleOutputId">{{ucatsbicycle | safe}}</output>
+		</div>
+        <div class="slidecontainer">
+            <div class="slider">
+            <input type="range" min="0" max="100" value="{{ucatsbicycle | safe}}" step="0.25" class="slider" id="rangeslider" name="ucatsbicycle" oninput="ucatsbicycleOutputId.value = ucatsbicycle.value">
             </div>
-            <div class="variableContainer">
-                <p>UCATS Bicycle Index</p>
-                <output class="output" name="ucats-bicycle-text" id="ucatsbicycleOutputId">{{ucatsbicycle | safe}}</output>
+        </div>
+		<div class="variableContainer">
+			<p>UCATS Pedestrian Index</p>
+			<output class="output" name="ucats-ped-text" id="ucatspedOutputId">{{ucatsped | safe}}</output>
+		</div>
+        <div class="slidecontainer">
+            <div class="slider">
+            <input type="range" min="0" max="100" value="{{ucatsped | safe}}" step="0.25" class="slider" id="rangeslider" name="ucatsped" oninput="ucatspedOutputId.value = ucatsped.value">
             </div>
-            <div class="slidecontainer">
-                <div class="slider">
-                <input type="range" min="0" max="100" value="{{ucatsbicycle | safe}}" step="0.25" class="slider" id="rangeslider" name="ucatsbicycle" oninput="ucatsbicycleOutputId.value = ucatsbicycle.value">
-                </div>
+        </div>
+		<div class="variableContainer">
+			<p>Safety Score</p>
+			<output class="output" name="safety-text" id="safetyOutputId">{{safety | safe}}</output>
+		</div>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="0" max="100" value="{{safety | safe}}" step="0.25" class="slider" name="safety" id="rangeslider" oninput="safetyOutputId.value = safety.value">
             </div>
-            <div class="variableContainer">
-                <p>UCATS Pedestrian Index</p>
-                <output class="output" name="ucats-ped-text" id="ucatspedOutputId">{{ucatsped | safe}}</output>
+        </div>
+		<div class="variableContainer">
+			<p>Sidewalk Presence</p>
+			<output class="output" name="sidewalk-text" id="sidewalkOutputId">{{sidewalk | safe}}</output>
+		</div>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="0" max="100" value="{{sidewalk | safe}}" step="0.25" class="slider" id="rangeslider" name="sidewalk" oninput="sidewalkOutputId.value = sidewalk.value">
             </div>
-            <div class="slidecontainer">
-                <div class="slider">
-                <input type="range" min="0" max="100" value="{{ucatsped | safe}}" step="0.25" class="slider" id="rangeslider" name="ucatsped" oninput="ucatspedOutputId.value = ucatsped.value">
-                </div>
+        </div>
+		<div class="variableContainer">
+			<p>Crosswalk Presence</p>
+			<output class="output" name="crosswalk-text" id="crosswalkOutputId">{{crosswalk | safe}}</output>
+		</div>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="0" max="100" value="{{crosswalk | safe}}" step="0.25" class="slider" id="rangeslider" name="crosswalk" oninput="crosswalkOutputId.value = crosswalk.value">
             </div>
-            <div class="variableContainer">
-                <p>Safety Score</p>
-                <output class="output" name="safety-text" id="safetyOutputId">{{safety | safe}}</output>
+        </div>
+		<div class="variableContainer">
+			<p>Bicycle Lane Presence</p>
+			<output class="output" name="bike-lane-text" id="bikelaneOutputId">{{bikelane | safe}}</output>
+		</div>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="0" max="100" value="{{bikelane | safe}}" step="0.25" class="slider" id="rangeslider" name="bikelane" oninput="bikelaneOutputId.value = bikelane.value">
             </div>
-            <div class="slidecontainer">
-                <div class="slider">
-                    <input type="range" min="0" max="100" value="{{safety | safe}}" step="0.25" class="slider" name="safety" id="rangeslider" oninput="safetyOutputId.value = safety.value">
-                </div>
+        </div>
+		<div class="variableContainer">
+			<p>Bicycle Connectivity</p>
+			<output class="output" name="bike-connectivity-text" id="bikeconnectivityOutputId">{{bikeconnectivity | safe}}</output>
+		</div>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="0" max="100" value="{{bikeconnectivity | safe}}" step="0.25" class="slider" name="bikeconnectivity" id="rangeslider"  oninput="bikeconnectivityOutputId.value = bikeconnectivity.value">
             </div>
-            <div class="variableContainer">
-                <p>Sidewalk Presence</p>
-                <output class="output" name="sidewalk-text" id="sidewalkOutputId">{{sidewalk | safe}}</output>
+        </div>
+		<div class="variableContainer">
+			<p>Pedestrian Connectivity</p>
+			<output class="output" name="ped-connectivity-text" id="pedconnectivityOutputId">{{pedconnectivity | safe}}</output>
+		</div>
+        <div class="slidecontainer">
+            <div class="slider">
+                <input type="range" min="0" max="100" value="{{pedconnectivity | safe}}" step="0.25" class="slider" name = "pedconnectivity" id="rangeslider" oninput="pedconnectivityOutputId.value = pedconnectivity.value" >
             </div>
-            <div class="slidecontainer">
-                <div class="slider">
-                    <input type="range" min="0" max="100" value="{{sidewalk | safe}}" step="0.25" class="slider" id="rangeslider" name="sidewalk" oninput="sidewalkOutputId.value = sidewalk.value">
-                </div>
-            </div>
-            <div class="variableContainer">
-                <p>Crosswalk Presence</p>
-                <output class="output" name="crosswalk-text" id="crosswalkOutputId">{{crosswalk | safe}}</output>
-            </div>
-            <div class="slidecontainer">
-                <div class="slider">
-                    <input type="range" min="0" max="100" value="{{crosswalk | safe}}" step="0.25" class="slider" id="rangeslider" name="crosswalk" oninput="crosswalkOutputId.value = crosswalk.value">
-                </div>
-            </div>
-            <div class="variableContainer">
-                <p>Bicycle Lane Presence</p>
-                <output class="output" name="bike-lane-text" id="bikelaneOutputId">{{bikelane | safe}}</output>
-            </div>
-            <div class="slidecontainer">
-                <div class="slider">
-                    <input type="range" min="0" max="100" value="{{bikelane | safe}}" step="0.25" class="slider" id="rangeslider" name="bikelane" oninput="bikelaneOutputId.value = bikelane.value">
-                </div>
-            </div>
-            <div class="variableContainer">
-                <p>Bicycle Connectivity</p>
-                <output class="output" name="bike-connectivity-text" id="bikeconnectivityOutputId">{{bikeconnectivity | safe}}</output>
-            </div>
-            <div class="slidecontainer">
-                <div class="slider">
-                    <input type="range" min="0" max="100" value="{{bikeconnectivity | safe}}" step="0.25" class="slider" name="bikeconnectivity" id="rangeslider"  oninput="bikeconnectivityOutputId.value = bikeconnectivity.value">
-                </div>
-            </div> 
-            <div class="variableContainer">
-                <p>Pedestrian Connectivity</p>
-                <output class="output" name="ped-connectivity-text" id="pedconnectivityOutputId">{{pedconnectivity | safe}}</output>
-            </div>
-            <div class="slidecontainer">
-                <div class="slider">
-                    <input type="range" min="0" max="100" value="{{pedconnectivity | safe}}" step="0.25" class="slider" name = "pedconnectivity" id="rangeslider" oninput="pedconnectivityOutputId.value = pedconnectivity.value" >
-                </div>
-            </div>
-            <div>
-                <input type="submit" value="Reweight Analysis">
-                <div class="sliderTotal">
-                    <h6>Sum of Weights</h6>
-                    <h6 class=sliderTotalSum>%</h6> 
-                </div>
-            </div>
-            </form>
-        </nav>  
-        <div id="map"></div>
-    </div>
+        </div>
+		<div>
+			<input type="submit" value="Reweight Analysis">
+			<div class="sliderTotal">
+				<h6>Sum of Weights</h6>
+				<h6 class=sliderTotalSum>%</h6>
+			</div>
+		</div>
+        </form>
+	</nav>
+	<div class="d-flex-fill bd-highlight">
+		<div id="map" class="map"></div>
+	</div>
     <script src="{{url_for('static',filename='application/main.js')}}"></script>
 
 </body>

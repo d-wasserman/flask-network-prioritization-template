@@ -5,9 +5,9 @@ html, body {
 }
 
 
-
 /* Map Styles */
-#map { height: 92%;
+#map { 
+	   height: 92%;
        width: 75%;
        margin-left:25%;
        }
@@ -89,11 +89,12 @@ h6.legendText {
 .navbar {
   height:8%;
   padding-top:4px;
+  min-height: 30px;
   
 }    
 .navbar-brand {
     padding:0;
-    font-size: calc(10px + 1.25vh);   
+    font-size: calc(12px + 1.15vh);   
 }
 .sidebar-nav {
   height: 92%;
