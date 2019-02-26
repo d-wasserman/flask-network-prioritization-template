@@ -88,13 +88,14 @@ h6.legendText {
 /* Nav & Sidebar Styles */
 .navbar {
   height:8%;
-  padding-top:4px;
+  padding-top:1px;
+  padding-bottom:1px;
   min-height: 30px;
   
 }    
 .navbar-brand {
     padding:0;
-    font-size: calc(12px + 1.15vh);   
+    font-size:18px;   
 }
 .sidebar-nav {
   height: 92%;
@@ -107,7 +108,7 @@ h6.legendText {
 }
 
 .sidebar-nav p {
-    font-size: calc(10px + 0.5vh);
+    font-size: 16px;
     color:white;
     text-transform: uppercase;
     text-align: left;
@@ -145,8 +146,7 @@ h6.legendText {
 }
 
 .output { 
-    font-size: calc(10px + 0.5vh);
-    heignt:4em;
+    font-size:14px;
     color:black;
     display: inline-block;
     align-content: right;
