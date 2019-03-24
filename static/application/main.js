@@ -104,8 +104,8 @@ var download = L.control({position: 'bottomleft'});
 download.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'button')
- 	div.innerHTML = "<a href= "+serviceURL+ " download>"+ "<h6 class='download' >DOWNLOAD</h6></a>"       
-    
+ 	div.innerHTML = "<a href= "+serviceURL+ " download>"+ "<h6 class='download' >DOWNLOAD</h6></a>"
+
 
     return div;
 };
@@ -114,14 +114,14 @@ download.addTo(map);
 
 
 // Create Sum of Elements
- 
+
 function recomputeWeightedSum(){
 	var sliderOutputSum = 0;
 	$(".output").each(function(){
 		sliderOutputSum += parseFloat($(this).text());
 		return sliderOutputSum
 	});
-	$("h6.sliderTotalSum").text(sliderOutputSum.toFixed(2)).append(" %"); 
+	$("h6.sliderTotalSum").text(sliderOutputSum.toFixed(2)).append(" %");
 };
 
 recomputeWeightedSum(); //Initial Set up
