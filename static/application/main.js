@@ -37,14 +37,6 @@ var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/
 	attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ, TomTom, Intermap, iPC, USGS, FAO, NPS, NRCAN, GeoBase, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), and the GIS User Community'
 });
 
-var baseMaps = {
-    "Toner": Stamen_Toner,
-    "Watercolor": Stamen_Watercolor,
-    "Topographic":Esri_WorldTopoMap
-    };
-
-L.control.layers(baseMaps).addTo(map);
-
 
 //Add & Style Network
 
@@ -76,6 +68,19 @@ function setupPopUp(f,l){
 
 var networkLayer = new L.GeoJSON.AJAX(serviceURL,networkOptions);
 networkLayer.addTo(map);
+// Layer Control 
+var baseMaps = {
+    "Toner": Stamen_Toner,
+    "Watercolor": Stamen_Watercolor,
+    "Topographic":Esri_WorldTopoMap
+    };
+
+var overlayMaps = {
+	"Prioritization":networkLayer
+	};
+
+L.control.layers(baseMaps,overlayMaps).addTo(map);
+
 //Legend
 var legend = L.control({position: 'bottomright'});
 
