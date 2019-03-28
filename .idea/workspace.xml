@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="124" column="22" selection-start-line="124" selection-start-column="17" selection-end-line="124" selection-end-column="22" />
+            <state relative-caret-position="162">
+              <caret line="144" column="69" selection-start-line="144" selection-start-column="69" selection-end-line="144" selection-end-column="69" />
               <folding>
                 <element signature="e#824#839#0" expanded="true" />
               </folding>
@@ -25,6 +25,10 @@
     </leaf>
   </component>
   <component name="FindInProjectRecents">
+    <findStrings>
+      <find>new_c</find>
+      <find>sess</find>
+    </findStrings>
     <replaceStrings>
       <replace>,</replace>
     </replaceStrings>
@@ -67,7 +71,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../My Education/Data and Computer Science/PyProjects/T_Notebooks" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -152,15 +156,15 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32863188" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2545969" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.91743726" visible="true" weight="0.33521923" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39915374" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32863188" />
-      <window_info anchor="bottom" id="Python Console" order="8" weight="0.32863188" />
+      <window_info anchor="bottom" id="Python Console" order="8" weight="0.3281471" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.082562745" side_tool="true" visible="true" weight="0.33521923" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -203,8 +207,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="124" column="22" selection-start-line="124" selection-start-column="17" selection-end-line="124" selection-end-column="22" />
+        <state relative-caret-position="162">
+          <caret line="144" column="69" selection-start-line="144" selection-start-column="69" selection-end-line="144" selection-end-column="69" />
           <folding>
             <element signature="e#824#839#0" expanded="true" />
           </folding>

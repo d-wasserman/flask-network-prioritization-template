@@ -76,19 +76,20 @@ def weighted_sum(df, value_columns, weights, new_output_column="WeightedSum",sum
     df[new_output_column] = data.dot(weight_df)
     return df
 
-def return_edited_geojson(gjson_path,property,values):
+def return_edited_geojson(gjson_path,dataframe):
     """This function will return a geojson data with properties edited based on a passed property name, and
     and ordered list of values.
     :param gjson_path - path to input
-    :param property - name of property to replace
-    :param values - list of values to replace for property- order in feature order
+    :param dataframe - pd.dataframe with column names to replace in the geojson and values replace in feature order
     :returns data - edited dictionary
     """
     with open(gjson_path) as file:
         data = json.load(file)
-        for idx,feature in enumerate(data["features"]): # Pass by reference
-            dict = feature["properties"]
-            dict[property] = values[idx]
+        for property in dataframe.columns:
+            values = dataframe[property].to_list()
+            for idx,feature in enumerate(data["features"]): # Pass by reference
+                dict = feature["properties"]
+                dict[property] = values[idx]
     return data
 
 def get_weights(weight_names):
@@ -119,10 +120,12 @@ def index():
         weights = [10.0, 10.0, 3.75, 12.5, 8.75, 10.0, 10.0, 10.0, 25.0]  # must be in same order as weight_names
         weight_dictionary = {i: j for i, j in zip(weight_names, weights)}
         out_field = "Priority_Score"
+        score_difference = "Difference_Score"
         session["weights"] = weights
         session["weight_names"] = weight_names
         session["fields"] = fields
         session["new_column"] = out_field
+        session["diff_column"] = score_difference
         session["dict"] = weight_dictionary
     else:
         weight_dictionary = session["dict"]
@@ -138,9 +141,10 @@ def reweighted_geojson():
     """
     df = get_df_from_geojson_properties(base_gjson)
     df = df[session["fields"]]
-    df = weighted_sum(df,session["fields"], session["weights"], session["new_column"])
-    data = return_edited_geojson(base_gjson,session["new_column"],df[session["new_column"]].tolist())
-    return jsonify(data)
+    df = weighted_sum(df, session["fields"], session["weights"], session["new_column"])
+    data = return_edited_geojson(base_gjson,df[[session["new_column"]]].copy())
+    geojson_service = jsonify(data)
+    return geojson_service
 
 @app.route("/revised_weights",methods=["GET","POST"])
 def revised_weights():
@@ -161,4 +165,4 @@ def revised_weights():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
