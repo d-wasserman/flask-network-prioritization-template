@@ -56,6 +56,16 @@ def get_df_from_geojson_properties(geojson_path):
         df = pd.DataFrame(records)
         return df
 
+def get_df_from_geojson_obj(geojson_obj):
+    """Returns geojson dict-like object properties as a dataframe
+    :param - geojson_obj - dict-like data object from json load
+    :returns - dataframe - dataframe of geojson properties"""
+    records = []
+    for feature in geojson_obj["features"]:
+        dict = feature["properties"]
+        records.append((dict))
+    df = pd.DataFrame(records)
+    return df
 
 def weighted_sum(df, value_columns, weights, new_output_column="WeightedSum",sum_to_one=True):
     """Description:
@@ -76,21 +86,19 @@ def weighted_sum(df, value_columns, weights, new_output_column="WeightedSum",sum
     df[new_output_column] = data.dot(weight_df)
     return df
 
-def return_edited_geojson(gjson_path,dataframe):
+def return_edited_geojson(gjson_data,dataframe):
     """This function will return a geojson data with properties edited based on a passed property name, and
     and ordered list of values.
-    :param gjson_path - path to input
+    :param gjson_data- open data file from json load - dict-like
     :param dataframe - pd.dataframe with column names to replace in the geojson and values replace in feature order
     :returns data - edited dictionary
     """
-    with open(gjson_path) as file:
-        data = json.load(file)
-        for property in dataframe.columns:
-            values = dataframe[property].to_list()
-            for idx,feature in enumerate(data["features"]): # Pass by reference
-                dict = feature["properties"]
-                dict[property] = values[idx]
-    return data
+    for property in dataframe.columns:
+        values = dataframe[property].to_list()
+        for idx,feature in enumerate(gjson_data["features"]): # Pass by reference
+            dict = feature["properties"]
+            dict[property] = values[idx]
+    return gjson_data
 
 def get_weights(weight_names):
     """Given a list of html id names, return the values of the input forms as a list in the
@@ -127,6 +135,7 @@ def index():
         session["new_column"] = out_field
         session["diff_column"] = score_difference
         session["dict"] = weight_dictionary
+
     else:
         weight_dictionary = session["dict"]
     return render_template("index.html",**weight_dictionary)
@@ -139,10 +148,12 @@ def reweighted_geojson():
     :param: None
     :return geojson - network data edited
     """
-    df = get_df_from_geojson_properties(base_gjson)
+    with open(base_gjson) as file:
+        data = json.load(file)
+    df = get_df_from_geojson_obj(data)
     df = df[session["fields"]]
     df = weighted_sum(df, session["fields"], session["weights"], session["new_column"])
-    data = return_edited_geojson(base_gjson,df[[session["new_column"]]].copy())
+    data = return_edited_geojson(data,df[[session["new_column"]]].copy())
     geojson_service = jsonify(data)
     return geojson_service
 

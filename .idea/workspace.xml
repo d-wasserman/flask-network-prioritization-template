@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="144" column="69" selection-start-line="144" selection-start-column="69" selection-end-line="144" selection-end-column="69" />
+            <state relative-caret-position="241">
+              <caret line="153" column="30" lean-forward="true" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="30" />
               <folding>
                 <element signature="e#824#839#0" expanded="true" />
               </folding>
@@ -28,6 +28,7 @@
     <findStrings>
       <find>new_c</find>
       <find>sess</find>
+      <find>with</find>
     </findStrings>
     <replaceStrings>
       <replace>,</replace>
@@ -207,8 +208,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="144" column="69" selection-start-line="144" selection-start-column="69" selection-end-line="144" selection-end-column="69" />
+        <state relative-caret-position="241">
+          <caret line="153" column="30" lean-forward="true" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="30" />
           <folding>
             <element signature="e#824#839#0" expanded="true" />
           </folding>
