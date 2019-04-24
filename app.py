@@ -128,13 +128,17 @@ def index():
         weights = [10.0, 10.0, 3.75, 12.5, 8.75, 10.0, 10.0, 10.0, 25.0]  # must be in same order as weight_names
         weight_dictionary = {i: j for i, j in zip(weight_names, weights)}
         out_field = "Priority_Score"
+        old_out_field = "Last_Priority_Score"
         score_difference = "Difference_Score"
         session["weights"] = weights
+        session["last_weights"] = weights
         session["weight_names"] = weight_names
         session["fields"] = fields
         session["new_column"] = out_field
+        session["old_column"] = old_out_field
         session["diff_column"] = score_difference
         session["dict"] = weight_dictionary
+
 
     else:
         weight_dictionary = session["dict"]
@@ -152,9 +156,12 @@ def reweighted_geojson():
         data = json.load(file)
     df = get_df_from_geojson_obj(data)
     df = df[session["fields"]]
+    df = weighted_sum(df, session["fields"], session["last_weights"], session["old_column"])
     df = weighted_sum(df, session["fields"], session["weights"], session["new_column"])
-    data = return_edited_geojson(data,df[[session["new_column"]]].copy())
+    df[session["diff_column"]] = df[session["new_column"]]- df[session["old_column"]]
+    data = return_edited_geojson(data,df[[session["old_column"],session["new_column"],session["diff_column"]]].copy())
     geojson_service = jsonify(data)
+    session["last_weights"] = session["weights"]
     return geojson_service
 
 @app.route("/revised_weights",methods=["GET","POST"])

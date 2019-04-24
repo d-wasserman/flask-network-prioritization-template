@@ -9,8 +9,11 @@ $( document ).ready(function() {
 const filePath = "static/application/data/WestValleyATPNetwork.geojson"; //Use for static reference
 const serviceURL = "api/network_geojson.geojson"; // Use for dynamic weighted reference
 var valueDomains = [1,3]
-var colorSpectrum = ["ffe760","ff5656","773131"]
-var networkOptions = {style:styleColor,onEachFeature:setupPopUp}
+var differenceDomains = [-1,1]
+var priorityColorSpectrum = ["ffe760","ff5656","773131"]
+var differenceColorSpectrum = ["67a9cf","f7f7f7","ef8a62"]
+var priorityOptions = {style:priorityColor,onEachFeature:setupPopUp}
+var differenceOptions = {style:differenceColor,onEachFeature:setupPopUp}
 //Set Up Map Basic
 
 var map = L.map('map').setView([40.688, -112.00], 13);
@@ -40,11 +43,18 @@ var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/
 
 //Add & Style Network
 
-colorScale = chroma.scale(colorSpectrum).domain(valueDomains);
-
-function styleColor(feature) {
+priorityColorScale = chroma.scale(priorityColorSpectrum).domain(valueDomains);
+differenceColorScale = chroma.scale(differenceColorSpectrum).domain(differenceDomains);
+function priorityColor(feature) {
     return {
-        color: colorScale(feature.properties.Priority_Score),
+        color: priorityColorScale(feature.properties.Priority_Score),
+        weight: 3,
+        opacity: 1
+    };
+}
+function differenceColor(feature) {
+    return {
+        color: differenceColorScale(feature.properties.Difference_Score),
         weight: 3,
         opacity: 1
     };
@@ -66,8 +76,11 @@ function setupPopUp(f,l){
     }
 }
 
-var networkLayer = new L.GeoJSON.AJAX(serviceURL,networkOptions);
-networkLayer.addTo(map);
+var priorityLayer = new L.GeoJSON.AJAX(serviceURL,priorityOptions);
+var differenceLayer = new L.GeoJSON.AJAX(serviceURL,differenceOptions);
+
+priorityLayer.addTo(map);
+
 // Layer Control 
 var baseMaps = {
     "Toner": Stamen_Toner,
@@ -76,7 +89,8 @@ var baseMaps = {
     };
 
 var overlayMaps = {
-	"Prioritization":networkLayer
+	"Prioritization":priorityLayer,
+    "Score Change":differenceLayer
 	};
 
 L.control.layers(baseMaps,overlayMaps).addTo(map);
@@ -96,7 +110,7 @@ var div = L.DomUtil.create('div', 'info legend'),
 div.innerHTML=  title + "<br>"
 for (var i = 0; i < grades.length; i++) {
     div.innerHTML +=
-        '<i style="background:' + colorScale(grades[i]) + '"></i> ' + '<h6 class="legendText">' + labels[i] + '</h6>' + '<br>';
+        '<i style="background:' + priorityColorScale (grades[i]) + '"></i> ' + '<h6 class="legendText">' + labels[i] + '</h6>' + '<br>';
 }
     return div;
 };
