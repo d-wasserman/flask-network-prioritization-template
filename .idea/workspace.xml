@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="153" column="30" lean-forward="true" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="30" />
+            <state relative-caret-position="194">
+              <caret line="164" column="26" lean-forward="true" selection-start-line="164" selection-start-column="26" selection-end-line="164" selection-end-column="26" />
               <folding>
                 <element signature="e#824#839#0" expanded="true" />
               </folding>
@@ -29,6 +29,7 @@
       <find>new_c</find>
       <find>sess</find>
       <find>with</find>
+      <find>return_ed</find>
     </findStrings>
     <replaceStrings>
       <replace>,</replace>
@@ -157,7 +158,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32863188" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.91743726" visible="true" weight="0.33521923" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.9167768" visible="true" weight="0.33521923" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39915374" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -165,7 +166,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32863188" />
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.3281471" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.082562745" side_tool="true" visible="true" weight="0.33521923" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.083223246" side_tool="true" visible="true" weight="0.33521923" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -206,10 +207,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../My Education/Data and Computer Science/PyProjects/DS_Interviews/Zipcar_DS_Interview/Movie_Database_Review.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="153" column="30" lean-forward="true" selection-start-line="153" selection-start-column="30" selection-end-line="153" selection-end-column="30" />
+        <state relative-caret-position="194">
+          <caret line="164" column="26" lean-forward="true" selection-start-line="164" selection-start-column="26" selection-end-line="164" selection-end-column="26" />
           <folding>
             <element signature="e#824#839#0" expanded="true" />
           </folding>
