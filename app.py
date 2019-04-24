@@ -94,7 +94,7 @@ def return_edited_geojson(gjson_data,dataframe):
     :returns data - edited dictionary
     """
     for property in dataframe.columns:
-        values = dataframe[property].to_list()
+        values = dataframe[property].tolist()
         for idx,feature in enumerate(gjson_data["features"]): # Pass by reference
             dict = feature["properties"]
             dict[property] = values[idx]
