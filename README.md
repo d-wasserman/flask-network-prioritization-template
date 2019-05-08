@@ -26,7 +26,7 @@ This template uses the following CSS/JS libraries/frameworks for the frontend.
 
 * chroma-js 2.0.2
 
-* jquery 3.3.1
+* jquery 3.4.1
 
 * leaflet-ajax 2.1.0
 
