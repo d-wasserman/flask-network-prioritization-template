@@ -4,5 +4,7 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="3.6 Py web-dep" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="R User Library" level="project" />
+    <orderEntry type="library" name="R Skeletons" level="application" />
   </component>
 </module>

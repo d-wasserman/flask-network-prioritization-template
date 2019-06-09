@@ -13,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="91" column="44" lean-forward="true" selection-start-line="91" selection-start-column="44" selection-end-line="91" selection-end-column="44" />
+            <state relative-caret-position="-775">
+              <caret line="114" column="14" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
               <folding>
                 <element signature="e#824#839#0" expanded="true" />
               </folding>
@@ -30,6 +30,9 @@
       <find>sess</find>
       <find>with</find>
       <find>return_ed</find>
+      <find>revised_we</find>
+      <find>revised_weights</find>
+      <find>reweighted</find>
     </findStrings>
     <replaceStrings>
       <replace>,</replace>
@@ -48,9 +51,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1905" />
-    <option name="width" value="1945" />
-    <option name="height" value="2095" />
+    <option name="x" value="1200" />
+    <option name="y" value="372" />
+    <option name="width" value="325" />
+    <option name="height" value="140" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -152,12 +156,12 @@
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12219287" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12340711" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32863188" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.9167768" weight="0.33521923" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.9167768" visible="true" weight="0.33521923" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39915374" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -166,6 +170,8 @@
       <window_info anchor="bottom" id="Python Console" order="8" weight="0.3281471" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.083223246" side_tool="true" weight="0.33521923" />
+      <window_info anchor="right" id="R Graphics" />
+      <window_info anchor="right" id="R Packages" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -215,8 +221,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="91" column="44" lean-forward="true" selection-start-line="91" selection-start-column="44" selection-end-line="91" selection-end-column="44" />
+        <state relative-caret-position="-775">
+          <caret line="114" column="14" selection-start-line="114" selection-start-column="14" selection-end-line="114" selection-end-column="14" />
           <folding>
             <element signature="e#824#839#0" expanded="true" />
           </folding>

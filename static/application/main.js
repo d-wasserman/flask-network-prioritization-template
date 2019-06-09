@@ -41,7 +41,7 @@ var Stamen_Toner = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner/
 });
 
 
-//Add & Style Network
+//Style Network
 
 priorityColorScale = chroma.scale(priorityColorSpectrum).domain(valueDomains);
 differenceColorScale = chroma.scale(differenceColorSpectrum).domain(differenceDomains);
@@ -76,10 +76,33 @@ function setupPopUp(f,l){
     }
 }
 
+// Add Network & Refresh
 var priorityLayer = new L.GeoJSON.AJAX(serviceURL,priorityOptions);
 var differenceLayer = new L.GeoJSON.AJAX(serviceURL,differenceOptions);
 
 priorityLayer.addTo(map);
+
+function refreshGeojson(){
+	var new_weights = {};
+	$(".slider").each(function(){
+		new_weights[this.name]=this.value;
+	});
+	console.log(new_weights)
+	req = $.ajax({
+		url:"/revise_weights",
+		type: "POST",
+		data: new_weights,
+		// send data to revised weights url - function 
+		// will read form on back end
+	});
+	req.done(function(data){
+		priorityLayer.refresh();
+		differenceLayer.refresh();
+		console.log("Refreshed Layers.");
+		// When Done, refresh the geojson. 
+	});
+	
+};
 
 // Layer Control 
 var baseMaps = {

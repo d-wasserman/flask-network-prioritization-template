@@ -124,7 +124,7 @@ def index():
         fields = ["PedConnect_Score", "LSBikConnect_Score", "Strava_Score", "UCATWKUse_Score", "UCATBKUse_Score",
                   "Bike_Ln_Score", "Crss_WK_Score", "SidWlk_Score", "Safety_Score"]
         weight_names = ["pedconnectivity", "bikeconnectivity", "strava", "ucatsped", "ucatsbicycle",
-                        "bikelane", "crosswalk", "sidewalk", "safety"]  # same order as weights
+                        "bikelane", "crosswalk", "sidewalk", "safety"]  # same order as weight fields
         weights = [10.0, 10.0, 3.75, 12.5, 8.75, 10.0, 10.0, 10.0, 25.0]  # must be in same order as weight_names
         weight_dictionary = {i: j for i, j in zip(weight_names, weights)}
         out_field = "Priority_Score"
@@ -139,9 +139,9 @@ def index():
         session["diff_column"] = score_difference
         session["dict"] = weight_dictionary
 
-
     else:
         weight_dictionary = session["dict"]
+
     return render_template("index.html",**weight_dictionary)
 
 
@@ -164,8 +164,8 @@ def reweighted_geojson():
     session["last_weights"] = session["weights"]
     return geojson_service
 
-@app.route("/revised_weights",methods=["GET","POST"])
-def revised_weights():
+@app.route("/revise_weights",methods=["GET","POST"])
+def revise_weights():
     """
     Returns reweighted geojson data to app.
     :param: None
@@ -176,8 +176,8 @@ def revised_weights():
     else:
         weight_list = session["weights"]
     session["weights"] = weight_list
-    weight_dictionary = {i:j for i,j in zip(session["weight_names"],session["weights"])}
-    return render_template("index.html",**weight_dictionary)
+    session["dict"] = {i:j for i,j in zip(session["weight_names"],session["weights"])}
+    return jsonify(session["dict"])
 
 
 
