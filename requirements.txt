@@ -1,0 +1,26 @@
+channels:
+- anaconda
+- defaults
+dependencies:
+- mkl=2017.0.3=0
+- numpy=1.13.1=py36_0
+- pandas=0.24.1=py36ha925a31_0
+- python-dateutil=2.7.5=py36_0
+- pytz=2018.9=py36_0
+- six=1.12.0=py36_0
+- vc=14.1=h21ff451_3
+- vs2015_runtime=15.5.2=3
+- certifi=2018.11.29=py36_0
+- click=7.0=py36_0
+- flask=1.0.2=py36_1
+- itsdangerous=1.1.0=py36_0
+- jinja2=2.10=py36_0
+- markupsafe=1.1.0=py36he774522_0
+- pip=19.0.1=py36_0
+- python=3.6.8=h9f7ef89_7
+- setuptools=40.8.0=py36_0
+- sqlite=3.26.0=he774522_0
+- werkzeug=0.14.1=py36_0
+- wheel=0.32.3=py36_0
+- wincertstore=0.2=py36h7fe50ca_0
+
