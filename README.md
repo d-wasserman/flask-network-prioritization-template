@@ -10,6 +10,7 @@ Part of the motivation for this project is to start 2019 by celebrating the 50th
 
 # Demonstration Animation
 
+![alt text](../blob/master/static/application/assets/Template_Screenshot.gif "Network Prioritization Example")
 
 # Build Information
 
