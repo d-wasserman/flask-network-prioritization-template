@@ -7,9 +7,9 @@
   "author": "David Wasserman david.wasserman.plan@gmail.com",
   "license": "Apache 2.0",
   "dependencies": {
-    "chroma-js": "^2.1.0",
-    "jquery": "^3.5.1",
-    "leaflet": "^1.6.0",
+    "chroma-js": "^2.1.1",
+    "jquery": "^3.6.0",
+    "leaflet": "^1.7.1",
     "leaflet-ajax": "^2.1.0"
   }
 }
