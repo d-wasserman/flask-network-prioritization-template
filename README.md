@@ -22,15 +22,17 @@ This template uses the following CSS/JS libraries/frameworks for the frontend.
 
 * Bootstrap 4.0.0 (Via CDN)
 
-* leaflet 1.3.4
+* leaflet 1.7.1
 
 * chroma-js 2.0.2
 
-* jquery 3.5.1
+* jquery 3.6.0
 
 * leaflet-ajax 2.1.0
 
 * lie 3.0.1
+
+* grunt >1.5.3
 
 ## Backend
 
