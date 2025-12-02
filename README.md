@@ -55,7 +55,7 @@ The backend environment uses [Flask](http://flask.pocoo.org/) for app deployment
 * sqlalchemy=1.2.15=py36hfa6e2cd_1000
 * vc=14=0
 * vs2015_runtime=14.0.25420=0
-* werkzeug=0.14.1=py_0
+* werkzeug=3.1.4=py_0
 * wheel=0.32.3=py36_0
 * wincertstore=0.2=py36_1002
 * blas=1.0=mkl
