@@ -22,13 +22,20 @@
 # Library Import
 import os, json
 import pandas as pd
-from flask import Flask, render_template, jsonify,session
+from flask import Flask, render_template, jsonify,session, abort
 from flask import request
 from flask import redirect,url_for
 
 # Config
 app = Flask(__name__)
-app.secret_key = os.urandom(24) # Random Key Generated for Sessions
+app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24)) # Random Key Generated for Sessions
+
+@app.after_request
+def add_security_headers(response):
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+    response.headers['Content-Security-Policy'] = "default-src 'self' https:; script-src 'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com; style-src 'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com; object-src 'none';"
+    return response
 
 ### DB Config - not used
 # from flask_sqlalchemy import SQLAlchemy
@@ -106,9 +113,12 @@ def get_weights(weight_names):
     @:param weight_fields - list of strings of names
     @:return weight_dictionary - dictionary of string names and their weights"""
     weight_list = []
-    for weight_id in weight_names:
-        weight = float(request.form[weight_id])
-        weight_list.append(weight)
+    try:
+        for weight_id in weight_names:
+            weight = float(request.form[weight_id])
+            weight_list.append(weight)
+    except ValueError:
+        abort(400)
     return weight_list
 
 # App
@@ -183,4 +193,5 @@ def revise_weights():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    debug_mode = os.environ.get('FLASK_DEBUG', 'False').lower() == 'true'
+    app.run(debug=debug_mode)

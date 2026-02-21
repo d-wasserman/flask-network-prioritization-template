@@ -22,3 +22,8 @@ $RECYCLE.BIN/
 # =========================
 # Operating System Files
 # =========================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
